@@ -2,6 +2,12 @@
 #include<iostream>
 #include<string>
 #include<vector>
+#include "Process.h"
+#include "PCB.h"
+#include "CPU.h"
+#include "Scheduler.h"
+#include "Dispatcher.h"
+ 
 
 class OperatingSystem {
 public: 
@@ -14,5 +20,5 @@ private:
 	Scheduler scheduler;
 	std::vector<PCB> pcb_vector;
 	Dispatcher dispatcher;
-	Process process;
+	std::vector<Process::Process> process_vector;
 };

@@ -19,9 +19,15 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CALCULATE.h" />
     <ClInclude Include="CPU.h" />
+    <ClInclude Include="I_0.h" />
     <ClInclude Include="OperatingSystem.h" />
+    <ClInclude Include="OUT.h" />
     <ClInclude Include="Process.h" />
+    <ClInclude Include="ProcessScript.h" />
+    <ClInclude Include="ProcessTypedef.h" />
+    <ClInclude Include="YIELD.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Process.cpp" />
