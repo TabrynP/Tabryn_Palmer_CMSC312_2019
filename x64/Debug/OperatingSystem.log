@@ -1,0 +1,16 @@
+﻿  OperatingSystem.cpp
+C:\Users\palme\source\repos\OperatingSystem\CPU.h(7,37): error C4430:  missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\palme\source\repos\OperatingSystem\CPU.h(7,37): error C2143:  syntax error: missing ',' before '&'
+C:\Users\palme\source\repos\OperatingSystem\Process.h(11,16): error C2011:  'Process::Process': 'class' type redefinition
+C:\Users\palme\source\repos\OperatingSystem\Process.h(11): message :  see declaration of 'Process::Process'
+C:\Users\palme\source\repos\OperatingSystem\OperatingSystem.h(15,2): error C2144:  syntax error: 'void' should be preceded by ';'
+C:\Users\palme\source\repos\OperatingSystem\OperatingSystem.cpp(23,20): error C2027:  use of undefined type 'Process::Process'
+C:\Users\palme\source\repos\OperatingSystem\Process.h(11): message :  see declaration of 'Process::Process'
+C:\Users\palme\source\repos\OperatingSystem\OperatingSystem.cpp(31,39): error C2039:  'processes_in_queue': is not a member of 'Scheduler'
+  Process.cpp
+C:\Users\palme\source\repos\OperatingSystem\Scheduler.h(4): message :  see declaration of 'Scheduler'
+C:\Users\palme\source\repos\OperatingSystem\Process.cpp(11,21): error C3861:  'parse_number': identifier not found
+  Scheduler.cpp
+  Generating Code...
+C:\Users\palme\source\repos\OperatingSystem\Process.cpp(14,14): error C3861:  'parse_number': identifier not found
+C:\Users\palme\source\repos\OperatingSystem\Scheduler.cpp(30): error C4716:  'Scheduler::schedule_processes': must return a value

@@ -19,18 +19,18 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CALCULATE.h" />
     <ClInclude Include="CPU.h" />
-    <ClInclude Include="I_0.h" />
+    <ClInclude Include="Dispatcher.h" />
     <ClInclude Include="OperatingSystem.h" />
-    <ClInclude Include="OUT.h" />
+    <ClInclude Include="PCB.h" />
     <ClInclude Include="Process.h" />
-    <ClInclude Include="ProcessScript.h" />
-    <ClInclude Include="ProcessTypedef.h" />
-    <ClInclude Include="YIELD.h" />
+    <ClInclude Include="Scheduler.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Dispatcher.cpp" />
+    <ClCompile Include="OperatingSystem.cpp" />
     <ClCompile Include="Process.cpp" />
+    <ClCompile Include="Scheduler.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

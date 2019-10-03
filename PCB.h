@@ -1,8 +1,11 @@
 #include <vector>
-#include "ProcessTypedef.h"
+#include <string>
 
 struct PCB {
-	int num_instructions;
-	std::vector<Process::script> instruction_types;
-	Process::state process_state;
+	State process_state;
+	int total_runtime;
+	std::string name;
 };
+
+typedef enum State { NEW, READY, RUN, WAIT, EXIT };
+
