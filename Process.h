@@ -1,4 +1,7 @@
 // Tabryn Palmer CMSC 312 Project
+#ifndef PROCESS_H
+#define PROCESS_H
+
 #include <string>
 #include <vector>
 #include <chrono>
@@ -11,14 +14,22 @@
 
 #include "PCB.h"
 
+struct ProcessMap {
+	ProcessMap(std::string type_in, int runtime_in) {
+		type = type_in;
+		runtime = runtime_in;
+	}
+	std::string type;
+	int runtime;
+};
+
 class Process {
 public:
 	Process(std::vector<std::string> program_file);
 	void update_state(State new_state);
-	void assign_process(int num_instructions);
 	int get_total_runtime() const { return process_PCB.total_runtime; }
-	void set_total_runtime(int total_runtime);
-	PCB get_PCB() { return process_PCB; }
+	void set_total_runtime(int total_runtime) { process_PCB.total_runtime = total_runtime; }
+	PCB get_PCB() const { return process_PCB; }
 
 private:
 
@@ -28,11 +39,9 @@ private:
 	PCB process_PCB;
 };
 
-struct ProcessMap {
-	ProcessMap(std::string type_in, int runtime_in) {
-		type = type_in;
-		runtime = runtime_in;
-	}
-	std::string type;
-	int runtime;
-};
+static int parse_number(std::string);
+
+
+#endif //PROCESS_H
+
+

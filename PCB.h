@@ -1,5 +1,10 @@
+#ifndef PCB_H
+#define PCB_H
+
 #include <vector>
 #include <string>
+
+enum State { NEW, READY, RUN, WAIT, EXIT };
 
 struct PCB {
 	State process_state;
@@ -7,5 +12,6 @@ struct PCB {
 	std::string name;
 };
 
-typedef enum State { NEW, READY, RUN, WAIT, EXIT };
+#endif // PCB_H
+
 

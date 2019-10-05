@@ -31,7 +31,7 @@ Process::Process(std::vector<std::string> program_file) {
 			int seed = parse_number(program_file[i]);
 			std::size_t pos = program_file[i].find(" ");
 			std::string map_string = program_file[i].substr(pos);
-			srand(time(NULL));
+			srand((unsigned int)(time)(NULL));
 			int map_int = rand() % (seed * 10);
 			process_map_vector.push_back(ProcessMap(map_string, map_int));
 		}

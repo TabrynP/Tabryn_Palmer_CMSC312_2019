@@ -1,4 +1,7 @@
 // Tabryn Palmer CMSC312 Project
+#ifndef OPERATING_SYSTEM_H
+#define OPERATING_SYSTEM_H
+
 #include<string>
 #include<vector>
 #include <fstream>
@@ -11,7 +14,7 @@
  
 class OperatingSystem {
 public: 
-	OperatingSystem();
+	OperatingSystem(int processes_in);
 
 	void read_program_file(std::string filename);
 	void get_num_processes();
@@ -21,9 +24,10 @@ public:
 private:
 	CPU CPU0;
 	Scheduler scheduler;
-	std::vector<PCB> pcb_vector;
 	Dispatcher dispatcher;
 	std::vector<Process> process_vector;
 	std::vector<std::vector<std::string>> program_files;
 	int num_processes;
 };
+
+#endif //OPERATING_SYSTEM_H

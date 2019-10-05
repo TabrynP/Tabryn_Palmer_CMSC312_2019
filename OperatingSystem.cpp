@@ -1,5 +1,12 @@
 #include "OperatingSystem.h"
 
+OperatingSystem::OperatingSystem(int processes_in) {
+	scheduler = Scheduler(500);
+	CPU0 = CPU();
+	dispatcher = Dispatcher();
+	num_processes = processes_in;
+}
+
 void OperatingSystem::read_program_file(std::string filename) {
 	std::string line;
 	std::ifstream program_file;

@@ -29,6 +29,7 @@
   <ItemGroup>
     <ClCompile Include="CPU.cpp" />
     <ClCompile Include="Dispatcher.cpp" />
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="OperatingSystem.cpp" />
     <ClCompile Include="Process.cpp" />
     <ClCompile Include="Scheduler.cpp" />

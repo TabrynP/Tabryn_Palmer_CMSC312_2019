@@ -31,4 +31,5 @@ std::vector<Process> Scheduler::schedule_processes(std::vector<Process> *process
 			in_queue = true;
 		}
 	}
+	return process_queue;
 }
