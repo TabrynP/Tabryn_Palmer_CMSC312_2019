@@ -1,0 +1,10 @@
+Name: Login Prompt
+Total Runtime: 500
+Memory: 10
+
+CALCULATE 100
+I/O 100
+OUT 100
+CALCULATE 50
+CALCULATE 59
+CALCULATE 60

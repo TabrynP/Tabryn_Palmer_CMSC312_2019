@@ -19,13 +19,20 @@ Process::Process(std::vector<std::string> program_file) {
 		}
 		else if (
 			program_file[i].find("CALCULATE") ||
-			program_file[i].find("I/O") ||
 			program_file[i].find("YIELD") ||
 			program_file[i].find("OUT")
 		) {
 			int map_int = parse_number(program_file[i]);
 			std::size_t pos = program_file[i].find(" ");
 			std::string map_string = program_file[i].substr(pos);
+			process_map_vector.push_back(ProcessMap(map_string, map_int));
+		}
+		else if (program_file[i].find("I/O")) {
+			int seed = parse_number(program_file[i]);
+			std::size_t pos = program_file[i].find(" ");
+			std::string map_string = program_file[i].substr(pos);
+			srand(time(NULL));
+			int map_int = rand() % (seed * 10);
 			process_map_vector.push_back(ProcessMap(map_string, map_int));
 		}
 		else {
@@ -38,7 +45,7 @@ Process::Process(std::vector<std::string> program_file) {
 }
 
 void Process::update_state(State new_state) {
-
+	process_PCB.process_state = new_state;
 }
 
 static int parse_number(std::string program_line) {

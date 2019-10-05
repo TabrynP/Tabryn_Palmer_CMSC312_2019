@@ -27,6 +27,7 @@
     <ClInclude Include="Scheduler.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CPU.cpp" />
     <ClCompile Include="Dispatcher.cpp" />
     <ClCompile Include="OperatingSystem.cpp" />
     <ClCompile Include="Process.cpp" />

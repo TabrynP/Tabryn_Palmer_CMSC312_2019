@@ -6,6 +6,8 @@
 #include <map>
 #include <fstream>
 #include <sstream>
+#include <cstdlib>
+#include <ctime>
 
 #include "PCB.h"
 
@@ -19,6 +21,7 @@ public:
 	PCB get_PCB() { return process_PCB; }
 
 private:
+
 	State current_state;
 	std::vector<ProcessMap> process_map_vector;
 	int memory;
