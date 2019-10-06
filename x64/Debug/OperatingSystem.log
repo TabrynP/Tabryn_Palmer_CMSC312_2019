@@ -1,8 +1,2 @@
-﻿  CPU.cpp
-  Dispatcher.cpp
-  main.cpp
-  OperatingSystem.cpp
-  Process.cpp
-  Scheduler.cpp
-  Generating Code...
+﻿  OperatingSystem.cpp
   OperatingSystem.vcxproj -> C:\Users\palme\source\repos\OperatingSystem\x64\Debug\OperatingSystem.exe

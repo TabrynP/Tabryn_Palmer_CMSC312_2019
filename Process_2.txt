@@ -1,0 +1,11 @@
+Name: antimalware
+Total Runtime: 5000
+Memory: 10
+
+CALCULATE 1000
+I/O 100
+OUT 100
+CALCULATE 50
+CALCULATE 59
+CALCULATE 60
+OUT 500

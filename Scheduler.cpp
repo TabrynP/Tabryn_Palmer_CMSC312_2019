@@ -11,19 +11,26 @@
 std::vector<Process> Scheduler::schedule_processes(std::vector<Process> *processes) {
 	in_queue = false;
 	std::vector<int> remaining_bt;
-	for (int i = 0; i < processes->size(); i++) {
-		remaining_bt[i] = processes->at(i).get_total_runtime();
-	}
 	std::vector<Process> process_queue;
 	for (int i = 0; i < processes->size(); i++) {
 		remaining_bt.push_back(processes->at(i).get_total_runtime() - time_quantum);
-		if (remaining_bt[i] > 0) {
+		if (remaining_bt[i] > 0 && processes->at(i).get_PCB().process_state != EXIT) {
 			process_queue.push_back(processes->at(i));
-			process_queue[i].set_total_runtime(remaining_bt[i]);
-			process_queue[i].update_state(READY);
 		}
 		else {
+			std::cout << "Process " << processes->at(i).get_PCB().name << " completed. " << std::endl;
 			processes->at(i).update_state(EXIT);
+		}
+	}
+	for (int i = 0; i < process_queue.size(); i++) {
+		if (process_queue[i].get_PCB().process_state == RUN) {
+			process_queue[i].set_total_runtime(remaining_bt[i]);
+		}
+		else if (process_queue[i].get_PCB().process_state == EXIT) {
+			continue;
+		}
+		else {
+			process_queue[i].update_state(READY);
 		}
 	}
 	for (int i = 0; i < remaining_bt.size(); i++) {
