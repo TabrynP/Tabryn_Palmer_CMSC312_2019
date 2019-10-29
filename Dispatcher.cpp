@@ -1,5 +1,9 @@
 #include "Dispatcher.h"
 
 void Dispatcher::dispatch_processes(std::vector<Process>& processes) {
-	processes[processes.size() - 1].update_state(RUN);
+	for (int i = 0; i < processes.size(); i++) {
+		if (processes[i].get_PCB().process_state == READY) {
+			processes[i].update_state(RUN);
+		}
+	}
 }

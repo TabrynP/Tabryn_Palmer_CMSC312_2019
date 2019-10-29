@@ -39,15 +39,15 @@ void OperatingSystem::create_processes() {
 void OperatingSystem::execute_processes() {
 	std::vector<Process> process_queue = process_vector;
 	do {
+		std::vector<Process> queue_temp = scheduler.schedule_processes(&process_queue);
+		process_queue.clear();
+		process_queue = queue_temp;
 		dispatcher.dispatch_processes(process_queue);
 		for (int i = 0; i < process_queue.size(); i++) {
 			if (process_queue[i].get_PCB().process_state == RUN) {
 				CPU0.execute_program(process_queue[i], scheduler);
 			}
 		}
-		std::vector<Process> queue_temp = scheduler.schedule_processes(&process_queue);
-		process_queue.clear();
-		process_queue = queue_temp;
 	} while (scheduler.processes_in_queue());
 	std::cout << "All processes executed. Aborting.";
 }

@@ -25,6 +25,7 @@ std::vector<Process> Scheduler::schedule_processes(std::vector<Process> *process
 	for (int i = 0; i < process_queue.size(); i++) {
 		if (process_queue[i].get_PCB().process_state == RUN) {
 			process_queue[i].set_total_runtime(remaining_bt[i]);
+			process_queue[i].update_state(READY);
 		}
 		else if (process_queue[i].get_PCB().process_state == EXIT) {
 			continue;
