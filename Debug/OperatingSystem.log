@@ -1,0 +1,394 @@
+﻿  CPU.cpp
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(834,1): error C2528: 'pointer': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(776): message : see reference to class template instantiation 'std::allocator<_Ty>' being compiled
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(776): message :         with
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(776): message :         [
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(776): message :             _Ty=Process &
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(776): message :         ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(359): message : see reference to class template instantiation 'std::allocator_traits<_Alloc>' being compiled
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(359): message :         with
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(359): message :         [
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(359): message :             _Alloc=std::allocator<Process &>
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(359): message :         ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(359): message : see reference to alias template instantiation 'std::_Rebind_alloc_t<std::allocator<_Ty>,_Ty>' being compiled
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(359): message :         with
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(359): message :         [
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(359): message :             _Ty=Process &
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(359): message :         ]
+C:\Users\palme\source\repos\Tabryn_Palmer_CMSC312_2019\Semaphore.h(10): message : see reference to class template instantiation 'std::vector<Process &,std::allocator<_Ty>>' being compiled
+C:\Users\palme\source\repos\Tabryn_Palmer_CMSC312_2019\Semaphore.h(10): message :         with
+C:\Users\palme\source\repos\Tabryn_Palmer_CMSC312_2019\Semaphore.h(10): message :         [
+C:\Users\palme\source\repos\Tabryn_Palmer_CMSC312_2019\Semaphore.h(10): message :             _Ty=Process &
+C:\Users\palme\source\repos\Tabryn_Palmer_CMSC312_2019\Semaphore.h(10): message :         ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(835,1): error C2528: 'const_pointer': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(851,1): error C2528: 'address': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(855,1): error C2528: 'address': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(865,1): error C2528: '_Ptr': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(870,1): error C2528: 'allocate': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(875,1): error C2528: 'allocate': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(723,1): error C2528: 'abstract declarator': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(777): message : see reference to class template instantiation 'std::_Default_allocator_traits<_Alloc>' being compiled
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(777): message :         with
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(777): message :         [
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(777): message :             _Alloc=std::allocator<Process &>
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(777): message :         ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(724,1): error C2528: 'abstract declarator': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(742,1): error C2528: '<template-parameter>': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(747,1): error C2528: '<template-parameter>': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(809,1): error C2528: 'abstract declarator': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(376): message : see reference to variable template 'const bool _Is_simple_alloc_v<std::allocator<Process &> >' being compiled
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(809,1): error C2528: '<template-parameter>': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(810,1): error C2528: 'abstract declarator': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(810,1): error C2528: '<template-parameter>': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(377,1): error C2528: '<template-parameter>': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(671,1): error C2535: 'void std::vector<Process &,std::allocator<_Ty>>::push_back(_Ty)': member function already defined or declared
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(671,1): error C2535:         with
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(671,1): error C2535:         [
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(671,1): error C2535:             _Ty=Process &
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(671,1): error C2535:         ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(667): message : see declaration of 'std::vector<Process &,std::allocator<_Ty>>::push_back'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(667): message :         with
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(667): message :         [
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(667): message :             _Ty=Process &
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(667): message :         ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(755,1): error C2535: 'std::_Vector_iterator<std::_Vector_val<std::_Simple_types<_Ty>>> std::vector<_Ty,std::allocator<_Ty>>::insert(std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<_Ty>>>,_Ty)': member function already defined or declared
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(755,1): error C2535:         with
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(755,1): error C2535:         [
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(755,1): error C2535:             _Ty=Process &
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(755,1): error C2535:         ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(751): message : see declaration of 'std::vector<Process &,std::allocator<_Ty>>::insert'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(751): message :         with
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(751): message :         [
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(751): message :             _Ty=Process &
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(751): message :         ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(1352,1): error C2528: 'data': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(1356,1): error C2528: 'data': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(819,1): error C2528: 'abstract declarator': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(306): message : see reference to class template instantiation 'std::_Simple_types<_Ty>' being compiled
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(306): message :         with
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(306): message :         [
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(306): message :             _Ty=Process &
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(306): message :         ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(1408): message : see reference to class template instantiation 'std::_Vector_val<std::_Simple_types<_Ty>>' being compiled
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(1408): message :         with
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(1408): message :         [
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(1408): message :             _Ty=Process &
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(1408): message :         ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(1706): message : see reference to class template instantiation 'std::_Compressed_pair<std::allocator<_Ty>,std::_Vector_val<std::_Simple_types<_Ty>>,true>' being compiled
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(1706): message :         with
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(1706): message :         [
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(1706): message :             _Ty=Process &
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(1706): message :         ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(820,1): error C2528: 'abstract declarator': pointer to reference is illegal
+  Dispatcher.cpp
+C:\Users\palme\source\repos\Tabryn_Palmer_CMSC312_2019\Semaphore.h(14,18): warning C4804: '>=': unsafe use of type 'bool' in operation
+C:\Users\palme\source\repos\Tabryn_Palmer_CMSC312_2019\Dispatcher.cpp(4,20): warning C4018: '<': signed/unsigned mismatch
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xutility(2417,18): error C2672: 'operator __surrogate_func': no matching overloaded function found
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xutility(2494): message : see reference to function template instantiation 'bool std::equal<_InIt1,_InIt2,std::equal_to<void>>(const _InIt1,const _InIt1,const _InIt2,_Pr)' being compiled
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xutility(2494): message :         with
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xutility(2494): message :         [
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xutility(2494): message :             _InIt1=const ProcessMap *,
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xutility(2494): message :             _InIt2=const ProcessMap *,
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xutility(2494): message :             _Pr=std::equal_to<void>
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xutility(2494): message :         ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(1725): message : see reference to function template instantiation 'bool std::equal<const ProcessMap*,const ProcessMap*>(const _InIt1,const _InIt1,const _InIt2)' being compiled
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(1725): message :         with
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(1725): message :         [
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(1725): message :             _InIt1=const ProcessMap *,
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(1725): message :             _InIt2=const ProcessMap *
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(1725): message :         ]
+C:\Users\palme\source\repos\Tabryn_Palmer_CMSC312_2019\Process.h(56): message : see reference to function template instantiation 'bool std::operator ==<ProcessMap,std::allocator<_Ty>>(const std::vector<_Ty,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)' being compiled
+C:\Users\palme\source\repos\Tabryn_Palmer_CMSC312_2019\Process.h(56): message :         with
+C:\Users\palme\source\repos\Tabryn_Palmer_CMSC312_2019\Process.h(56): message :         [
+C:\Users\palme\source\repos\Tabryn_Palmer_CMSC312_2019\Process.h(56): message :             _Ty=ProcessMap
+C:\Users\palme\source\repos\Tabryn_Palmer_CMSC312_2019\Process.h(56): message :         ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xutility(2417,1): error C2893: Failed to specialize function template 'unknown-type std::equal_to<void>::operator ()(_Ty1 &&,_Ty2 &&) noexcept(<expr>) const'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xstddef(199): message : see declaration of 'std::equal_to<void>::operator ()'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xutility(2417,1): message : With the following template arguments:
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xutility(2417,1): message : '_Ty1=_Ty &'
+  main.cpp
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xutility(2417,1): message : '_Ty2=_Ty &'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(834,1): error C2528: 'pointer': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(776): message : see reference to class template instantiation 'std::allocator<_Ty>' being compiled
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(776): message :         with
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(776): message :         [
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(776): message :             _Ty=Process &
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(776): message :         ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(359): message : see reference to class template instantiation 'std::allocator_traits<_Alloc>' being compiled
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(359): message :         with
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(359): message :         [
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(359): message :             _Alloc=std::allocator<Process &>
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(359): message :         ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(359): message : see reference to alias template instantiation 'std::_Rebind_alloc_t<std::allocator<_Ty>,_Ty>' being compiled
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(359): message :         with
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(359): message :         [
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(359): message :             _Ty=Process &
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(359): message :         ]
+C:\Users\palme\source\repos\Tabryn_Palmer_CMSC312_2019\Semaphore.h(10): message : see reference to class template instantiation 'std::vector<Process &,std::allocator<_Ty>>' being compiled
+C:\Users\palme\source\repos\Tabryn_Palmer_CMSC312_2019\Semaphore.h(10): message :         with
+C:\Users\palme\source\repos\Tabryn_Palmer_CMSC312_2019\Semaphore.h(10): message :         [
+C:\Users\palme\source\repos\Tabryn_Palmer_CMSC312_2019\Semaphore.h(10): message :             _Ty=Process &
+C:\Users\palme\source\repos\Tabryn_Palmer_CMSC312_2019\Semaphore.h(10): message :         ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(835,1): error C2528: 'const_pointer': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(851,1): error C2528: 'address': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(855,1): error C2528: 'address': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(865,1): error C2528: '_Ptr': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(870,1): error C2528: 'allocate': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(875,1): error C2528: 'allocate': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(723,1): error C2528: 'abstract declarator': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(777): message : see reference to class template instantiation 'std::_Default_allocator_traits<_Alloc>' being compiled
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(777): message :         with
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(777): message :         [
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(777): message :             _Alloc=std::allocator<Process &>
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(777): message :         ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(724,1): error C2528: 'abstract declarator': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(742,1): error C2528: '<template-parameter>': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(747,1): error C2528: '<template-parameter>': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(809,1): error C2528: 'abstract declarator': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(376): message : see reference to variable template 'const bool _Is_simple_alloc_v<std::allocator<Process &> >' being compiled
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(809,1): error C2528: '<template-parameter>': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(810,1): error C2528: 'abstract declarator': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(810,1): error C2528: '<template-parameter>': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(377,1): error C2528: '<template-parameter>': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(671,1): error C2535: 'void std::vector<Process &,std::allocator<_Ty>>::push_back(_Ty)': member function already defined or declared
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(671,1): error C2535:         with
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(671,1): error C2535:         [
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(671,1): error C2535:             _Ty=Process &
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(671,1): error C2535:         ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(667): message : see declaration of 'std::vector<Process &,std::allocator<_Ty>>::push_back'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(667): message :         with
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(667): message :         [
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(667): message :             _Ty=Process &
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(667): message :         ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(755,1): error C2535: 'std::_Vector_iterator<std::_Vector_val<std::_Simple_types<_Ty>>> std::vector<_Ty,std::allocator<_Ty>>::insert(std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<_Ty>>>,_Ty)': member function already defined or declared
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(755,1): error C2535:         with
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(755,1): error C2535:         [
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(755,1): error C2535:             _Ty=Process &
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(755,1): error C2535:         ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(751): message : see declaration of 'std::vector<Process &,std::allocator<_Ty>>::insert'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(751): message :         with
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(751): message :         [
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(751): message :             _Ty=Process &
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(751): message :         ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(1352,1): error C2528: 'data': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(1356,1): error C2528: 'data': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(819,1): error C2528: 'abstract declarator': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(306): message : see reference to class template instantiation 'std::_Simple_types<_Ty>' being compiled
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(306): message :         with
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(306): message :         [
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(306): message :             _Ty=Process &
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(306): message :         ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(1408): message : see reference to class template instantiation 'std::_Vector_val<std::_Simple_types<_Ty>>' being compiled
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(1408): message :         with
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(1408): message :         [
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(1408): message :             _Ty=Process &
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(1408): message :         ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(1706): message : see reference to class template instantiation 'std::_Compressed_pair<std::allocator<_Ty>,std::_Vector_val<std::_Simple_types<_Ty>>,true>' being compiled
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(1706): message :         with
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(1706): message :         [
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(1706): message :             _Ty=Process &
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(1706): message :         ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(820,1): error C2528: 'abstract declarator': pointer to reference is illegal
+C:\Users\palme\source\repos\Tabryn_Palmer_CMSC312_2019\Semaphore.h(14,18): warning C4804: '>=': unsafe use of type 'bool' in operation
+  OperatingSystem.cpp
+C:\Users\palme\source\repos\Tabryn_Palmer_CMSC312_2019\main.cpp(28,20): warning C4018: '<': signed/unsigned mismatch
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(834,1): error C2528: 'pointer': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(776): message : see reference to class template instantiation 'std::allocator<_Ty>' being compiled
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(776): message :         with
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(776): message :         [
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(776): message :             _Ty=Process &
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(776): message :         ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(359): message : see reference to class template instantiation 'std::allocator_traits<_Alloc>' being compiled
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(359): message :         with
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(359): message :         [
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(359): message :             _Alloc=std::allocator<Process &>
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(359): message :         ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(359): message : see reference to alias template instantiation 'std::_Rebind_alloc_t<std::allocator<_Ty>,_Ty>' being compiled
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(359): message :         with
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(359): message :         [
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(359): message :             _Ty=Process &
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(359): message :         ]
+C:\Users\palme\source\repos\Tabryn_Palmer_CMSC312_2019\Semaphore.h(10): message : see reference to class template instantiation 'std::vector<Process &,std::allocator<_Ty>>' being compiled
+C:\Users\palme\source\repos\Tabryn_Palmer_CMSC312_2019\Semaphore.h(10): message :         with
+C:\Users\palme\source\repos\Tabryn_Palmer_CMSC312_2019\Semaphore.h(10): message :         [
+C:\Users\palme\source\repos\Tabryn_Palmer_CMSC312_2019\Semaphore.h(10): message :             _Ty=Process &
+C:\Users\palme\source\repos\Tabryn_Palmer_CMSC312_2019\Semaphore.h(10): message :         ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(835,1): error C2528: 'const_pointer': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(851,1): error C2528: 'address': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(855,1): error C2528: 'address': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(865,1): error C2528: '_Ptr': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(870,1): error C2528: 'allocate': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(875,1): error C2528: 'allocate': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(723,1): error C2528: 'abstract declarator': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(777): message : see reference to class template instantiation 'std::_Default_allocator_traits<_Alloc>' being compiled
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(777): message :         with
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(777): message :         [
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(777): message :             _Alloc=std::allocator<Process &>
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(777): message :         ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(724,1): error C2528: 'abstract declarator': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(742,1): error C2528: '<template-parameter>': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(747,1): error C2528: '<template-parameter>': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(809,1): error C2528: 'abstract declarator': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(376): message : see reference to variable template 'const bool _Is_simple_alloc_v<std::allocator<Process &> >' being compiled
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(809,1): error C2528: '<template-parameter>': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(810,1): error C2528: 'abstract declarator': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(810,1): error C2528: '<template-parameter>': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(377,1): error C2528: '<template-parameter>': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(671,1): error C2535: 'void std::vector<Process &,std::allocator<_Ty>>::push_back(_Ty)': member function already defined or declared
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(671,1): error C2535:         with
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(671,1): error C2535:         [
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(671,1): error C2535:             _Ty=Process &
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(671,1): error C2535:         ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(667): message : see declaration of 'std::vector<Process &,std::allocator<_Ty>>::push_back'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(667): message :         with
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(667): message :         [
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(667): message :             _Ty=Process &
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(667): message :         ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(755,1): error C2535: 'std::_Vector_iterator<std::_Vector_val<std::_Simple_types<_Ty>>> std::vector<_Ty,std::allocator<_Ty>>::insert(std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<_Ty>>>,_Ty)': member function already defined or declared
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(755,1): error C2535:         with
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(755,1): error C2535:         [
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(755,1): error C2535:             _Ty=Process &
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(755,1): error C2535:         ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(751): message : see declaration of 'std::vector<Process &,std::allocator<_Ty>>::insert'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(751): message :         with
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(751): message :         [
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(751): message :             _Ty=Process &
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(751): message :         ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(1352,1): error C2528: 'data': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(1356,1): error C2528: 'data': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(819,1): error C2528: 'abstract declarator': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(306): message : see reference to class template instantiation 'std::_Simple_types<_Ty>' being compiled
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(306): message :         with
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(306): message :         [
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(306): message :             _Ty=Process &
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(306): message :         ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(1408): message : see reference to class template instantiation 'std::_Vector_val<std::_Simple_types<_Ty>>' being compiled
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(1408): message :         with
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(1408): message :         [
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(1408): message :             _Ty=Process &
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(1408): message :         ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(1706): message : see reference to class template instantiation 'std::_Compressed_pair<std::allocator<_Ty>,std::_Vector_val<std::_Simple_types<_Ty>>,true>' being compiled
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(1706): message :         with
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(1706): message :         [
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(1706): message :             _Ty=Process &
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(1706): message :         ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(820,1): error C2528: 'abstract declarator': pointer to reference is illegal
+C:\Users\palme\source\repos\Tabryn_Palmer_CMSC312_2019\Semaphore.h(14,18): warning C4804: '>=': unsafe use of type 'bool' in operation
+C:\Users\palme\source\repos\Tabryn_Palmer_CMSC312_2019\OperatingSystem.cpp(23,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\palme\source\repos\Tabryn_Palmer_CMSC312_2019\OperatingSystem.cpp(24,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\palme\source\repos\Tabryn_Palmer_CMSC312_2019\OperatingSystem.cpp(32,20): warning C4018: '<': signed/unsigned mismatch
+  Process.cpp
+C:\Users\palme\source\repos\Tabryn_Palmer_CMSC312_2019\OperatingSystem.cpp(47,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\palme\source\repos\Tabryn_Palmer_CMSC312_2019\Process.cpp(9,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\palme\source\repos\Tabryn_Palmer_CMSC312_2019\Process.cpp(50,20): warning C4018: '<': signed/unsigned mismatch
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xutility(2417,18): error C2672: 'operator __surrogate_func': no matching overloaded function found
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xutility(2494): message : see reference to function template instantiation 'bool std::equal<_InIt1,_InIt2,std::equal_to<void>>(const _InIt1,const _InIt1,const _InIt2,_Pr)' being compiled
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xutility(2494): message :         with
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xutility(2494): message :         [
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xutility(2494): message :             _InIt1=const ProcessMap *,
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xutility(2494): message :             _InIt2=const ProcessMap *,
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xutility(2494): message :             _Pr=std::equal_to<void>
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xutility(2494): message :         ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(1725): message : see reference to function template instantiation 'bool std::equal<const ProcessMap*,const ProcessMap*>(const _InIt1,const _InIt1,const _InIt2)' being compiled
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(1725): message :         with
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(1725): message :         [
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(1725): message :             _InIt1=const ProcessMap *,
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(1725): message :             _InIt2=const ProcessMap *
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(1725): message :         ]
+C:\Users\palme\source\repos\Tabryn_Palmer_CMSC312_2019\Process.h(56): message : see reference to function template instantiation 'bool std::operator ==<ProcessMap,std::allocator<_Ty>>(const std::vector<_Ty,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)' being compiled
+C:\Users\palme\source\repos\Tabryn_Palmer_CMSC312_2019\Process.h(56): message :         with
+C:\Users\palme\source\repos\Tabryn_Palmer_CMSC312_2019\Process.h(56): message :         [
+C:\Users\palme\source\repos\Tabryn_Palmer_CMSC312_2019\Process.h(56): message :             _Ty=ProcessMap
+C:\Users\palme\source\repos\Tabryn_Palmer_CMSC312_2019\Process.h(56): message :         ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xutility(2417,1): error C2893: Failed to specialize function template 'unknown-type std::equal_to<void>::operator ()(_Ty1 &&,_Ty2 &&) noexcept(<expr>) const'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xstddef(199): message : see declaration of 'std::equal_to<void>::operator ()'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xutility(2417,1): message : With the following template arguments:
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xutility(2417,1): message : '_Ty1=_Ty &'
+  Scheduler.cpp
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xutility(2417,1): message : '_Ty2=_Ty &'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(834,1): error C2528: 'pointer': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(776): message : see reference to class template instantiation 'std::allocator<_Ty>' being compiled
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(776): message :         with
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(776): message :         [
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(776): message :             _Ty=Process &
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(776): message :         ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(359): message : see reference to class template instantiation 'std::allocator_traits<_Alloc>' being compiled
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(359): message :         with
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(359): message :         [
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(359): message :             _Alloc=std::allocator<Process &>
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(359): message :         ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(359): message : see reference to alias template instantiation 'std::_Rebind_alloc_t<std::allocator<_Ty>,_Ty>' being compiled
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(359): message :         with
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(359): message :         [
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(359): message :             _Ty=Process &
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(359): message :         ]
+C:\Users\palme\source\repos\Tabryn_Palmer_CMSC312_2019\Semaphore.h(10): message : see reference to class template instantiation 'std::vector<Process &,std::allocator<_Ty>>' being compiled
+C:\Users\palme\source\repos\Tabryn_Palmer_CMSC312_2019\Semaphore.h(10): message :         with
+C:\Users\palme\source\repos\Tabryn_Palmer_CMSC312_2019\Semaphore.h(10): message :         [
+C:\Users\palme\source\repos\Tabryn_Palmer_CMSC312_2019\Semaphore.h(10): message :             _Ty=Process &
+C:\Users\palme\source\repos\Tabryn_Palmer_CMSC312_2019\Semaphore.h(10): message :         ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(835,1): error C2528: 'const_pointer': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(851,1): error C2528: 'address': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(855,1): error C2528: 'address': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(865,1): error C2528: '_Ptr': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(870,1): error C2528: 'allocate': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(875,1): error C2528: 'allocate': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(723,1): error C2528: 'abstract declarator': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(777): message : see reference to class template instantiation 'std::_Default_allocator_traits<_Alloc>' being compiled
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(777): message :         with
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(777): message :         [
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(777): message :             _Alloc=std::allocator<Process &>
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(777): message :         ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(724,1): error C2528: 'abstract declarator': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(742,1): error C2528: '<template-parameter>': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(747,1): error C2528: '<template-parameter>': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(809,1): error C2528: 'abstract declarator': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(376): message : see reference to variable template 'const bool _Is_simple_alloc_v<std::allocator<Process &> >' being compiled
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(809,1): error C2528: '<template-parameter>': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(810,1): error C2528: 'abstract declarator': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(810,1): error C2528: '<template-parameter>': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(377,1): error C2528: '<template-parameter>': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(671,1): error C2535: 'void std::vector<Process &,std::allocator<_Ty>>::push_back(_Ty)': member function already defined or declared
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(671,1): error C2535:         with
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(671,1): error C2535:         [
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(671,1): error C2535:             _Ty=Process &
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(671,1): error C2535:         ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(667): message : see declaration of 'std::vector<Process &,std::allocator<_Ty>>::push_back'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(667): message :         with
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(667): message :         [
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(667): message :             _Ty=Process &
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(667): message :         ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(755,1): error C2535: 'std::_Vector_iterator<std::_Vector_val<std::_Simple_types<_Ty>>> std::vector<_Ty,std::allocator<_Ty>>::insert(std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<_Ty>>>,_Ty)': member function already defined or declared
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(755,1): error C2535:         with
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(755,1): error C2535:         [
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(755,1): error C2535:             _Ty=Process &
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(755,1): error C2535:         ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(751): message : see declaration of 'std::vector<Process &,std::allocator<_Ty>>::insert'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(751): message :         with
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(751): message :         [
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(751): message :             _Ty=Process &
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(751): message :         ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(1352,1): error C2528: 'data': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(1356,1): error C2528: 'data': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(819,1): error C2528: 'abstract declarator': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(306): message : see reference to class template instantiation 'std::_Simple_types<_Ty>' being compiled
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(306): message :         with
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(306): message :         [
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(306): message :             _Ty=Process &
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(306): message :         ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(1408): message : see reference to class template instantiation 'std::_Vector_val<std::_Simple_types<_Ty>>' being compiled
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(1408): message :         with
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(1408): message :         [
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(1408): message :             _Ty=Process &
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(1408): message :         ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(1706): message : see reference to class template instantiation 'std::_Compressed_pair<std::allocator<_Ty>,std::_Vector_val<std::_Simple_types<_Ty>>,true>' being compiled
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(1706): message :         with
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(1706): message :         [
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(1706): message :             _Ty=Process &
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(1706): message :         ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(820,1): error C2528: 'abstract declarator': pointer to reference is illegal
+C:\Users\palme\source\repos\Tabryn_Palmer_CMSC312_2019\Semaphore.h(14,18): warning C4804: '>=': unsafe use of type 'bool' in operation
+C:\Users\palme\source\repos\Tabryn_Palmer_CMSC312_2019\Scheduler.cpp(17,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\palme\source\repos\Tabryn_Palmer_CMSC312_2019\Scheduler.cpp(27,20): warning C4018: '<': signed/unsigned mismatch
+  Generating Code...
+C:\Users\palme\source\repos\Tabryn_Palmer_CMSC312_2019\Scheduler.cpp(45,20): warning C4018: '<': signed/unsigned mismatch

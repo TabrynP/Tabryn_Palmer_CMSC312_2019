@@ -44,6 +44,7 @@ Process::Process(std::vector<std::string> program_file) {
 	process_PCB.process_state = current_state;
 	process_PCB.total_runtime = total_runtime;
 	process_PCB.name = name;
+	process_PCB.current_instruction = 0;
 
 	process_PCB.total_runtime = 0;
 	for (int i = 0; i < process_map_vector.size(); i++) {

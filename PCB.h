@@ -9,6 +9,7 @@ enum State { NEW, READY, RUN, WAIT, EXIT };
 struct PCB {
 	State process_state;
 	int total_runtime;
+	int current_instruction;
 	std::string name;
 };
 

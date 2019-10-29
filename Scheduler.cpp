@@ -8,6 +8,8 @@
 
 #include "Scheduler.h"
 
+static void set_current_state(Process&, int);
+
 std::vector<Process> Scheduler::schedule_processes(std::vector<Process> *processes) {
 	in_queue = false;
 	std::vector<int> remaining_bt;
@@ -26,6 +28,7 @@ std::vector<Process> Scheduler::schedule_processes(std::vector<Process> *process
 		if (process_queue[i].get_PCB().process_state == RUN) {
 			process_queue[i].set_total_runtime(remaining_bt[i]);
 			process_queue[i].update_state(READY);
+			set_current_state(process_queue[i], time_quantum);
 		}
 		else if (process_queue[i].get_PCB().process_state == EXIT) {
 			continue;
@@ -40,5 +43,22 @@ std::vector<Process> Scheduler::schedule_processes(std::vector<Process> *process
 		}
 	}
 	return process_queue;
+}
+
+static void set_current_state(Process& process, int time_quantum) {
+	int temp = process.get_PCB().current_instruction;
+	while (time_quantum > 0) {
+		if (process.process_map(temp).runtime < time_quantum) {
+			time_quantum = time_quantum - process.process_map(temp).runtime;
+			process.set_current_instruction(temp++);
+		}
+		else {
+			ProcessMap temp_map = process.process_map(temp);
+			temp_map.runtime = temp_map.runtime - time_quantum;
+			process.set_process_map(temp_map, temp);
+			time_quantum = 0;
+		}
+	}
+	
 }
 

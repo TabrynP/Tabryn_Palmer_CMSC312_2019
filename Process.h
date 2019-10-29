@@ -27,9 +27,30 @@ class Process {
 public:
 	Process(std::vector<std::string> program_file);
 	void update_state(State new_state);
-	int get_total_runtime() const { return process_PCB.total_runtime; }
-	void set_total_runtime(int total_runtime) { process_PCB.total_runtime = total_runtime; }
-	PCB get_PCB() const { return process_PCB; }
+	int get_total_runtime() const {
+		return process_PCB.total_runtime;
+	}
+	void set_total_runtime(int total_runtime) { 
+		process_PCB.total_runtime = total_runtime; 
+	}
+	PCB get_PCB() const { 
+		return process_PCB; 
+	}
+	State get_state() {
+		return process_PCB.process_state;
+	}
+	ProcessMap get_current_instruction() {
+		return process_map_vector[process_PCB.current_instruction];
+	}
+	void set_current_instruction(int in) {
+		process_PCB.current_instruction = in;
+	}
+	ProcessMap process_map(int in) {
+		return process_map_vector[in];
+	}
+	void set_process_map(ProcessMap in_map, int in) {
+		process_map_vector[in] = in_map;
+	}
 
 private:
 	State current_state;

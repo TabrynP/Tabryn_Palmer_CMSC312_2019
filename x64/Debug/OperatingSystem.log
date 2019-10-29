@@ -1,8 +1,2 @@
-﻿  CPU.cpp
-  Dispatcher.cpp
-  main.cpp
-  OperatingSystem.cpp
-  Process.cpp
-  Scheduler.cpp
-  Generating Code...
+﻿  Process.cpp
   OperatingSystem.vcxproj -> C:\Users\palme\source\Repos\Tabryn_Palmer_CMSC312_2019\x64\Debug\OperatingSystem.exe
