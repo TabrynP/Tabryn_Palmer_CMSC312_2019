@@ -32,7 +32,6 @@ public:
 	PCB get_PCB() const { return process_PCB; }
 
 private:
-
 	State current_state;
 	std::vector<ProcessMap> process_map_vector;
 	int memory;
