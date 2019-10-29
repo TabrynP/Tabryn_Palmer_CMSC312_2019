@@ -9,6 +9,7 @@
 #include "Scheduler.h"
 
 static void set_current_state(Process&, int);
+static void print_PCB(Process&);
 
 std::vector<Process> Scheduler::schedule_processes(std::vector<Process> *processes) {
 	in_queue = false;
@@ -26,20 +27,37 @@ std::vector<Process> Scheduler::schedule_processes(std::vector<Process> *process
 	}
 	for (int i = 0; i < process_queue.size(); i++) {
 		if (process_queue[i].get_PCB().process_state == RUN) {
-			process_queue[i].set_total_runtime(remaining_bt[i]);
-			process_queue[i].update_state(READY);
 			set_current_state(process_queue[i], time_quantum);
 		}
-		else if (process_queue[i].get_PCB().process_state == EXIT) {
-			continue;
+		else if (process_queue[i].get_PCB().process_state == WAIT) {
+			if (process_queue[i].get_current_instruction().type == "I/O") {
+				process_queue[i].set_total_runtime(remaining_bt[i]);
+			}
+			else {
+				process_queue[i].update_state(READY);
+			}
 		}
-		else {
+		if (process_queue[i].get_current_instruction().type == "I/O") {
+			process_queue[i].update_state(WAIT);
+		}
+		else if (process_queue[i].get_current_instruction().type == "CALCULATE") {
+			process_queue[i].update_state(READY);
+		}
+		else if (process_queue[i].get_current_instruction().type == "YIELD") {
+			Process temp = process_queue[i];
+			process_queue.erase(process_queue.begin() + (i - 1));
+			process_queue.insert(process_queue.begin(), temp);
+			process_queue.front().update_state(READY);
+		}
+		else if (process_queue[i].get_current_instruction().type == "OUT") {
+			print_PCB(process_queue[i]);
 			process_queue[i].update_state(READY);
 		}
 	}
 	for (int i = 0; i < remaining_bt.size(); i++) {
 		if (remaining_bt[i] > 0) {
 			in_queue = true;
+			break;
 		}
 	}
 	return process_queue;
@@ -62,3 +80,10 @@ static void set_current_state(Process& process, int time_quantum) {
 	
 }
 
+static void print_PCB(Process& process) {
+	for (int i = 0; i < process.get_current_instruction().runtime; i++) {}
+	PCB pcb = process.get_PCB();
+	std::cout << "Process Name: " << pcb.name << std::endl;
+	std::cout << "Process remaining runtime: " << pcb.total_runtime << std::endl;
+	std::cout << "Process current instruction: " << pcb.current_instruction << std::endl;
+}
