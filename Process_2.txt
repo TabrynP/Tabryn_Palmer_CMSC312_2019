@@ -2,7 +2,9 @@ Name: antimalware
 Total Runtime: 5000
 Memory: 10
 
+CRITICAL_in
 CALCULATE 1000
+CRITICAL_out
 I/O 100
 OUT 100
 CALCULATE 50

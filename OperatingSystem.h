@@ -25,7 +25,7 @@ private:
 	CPU CPU0;
 	Scheduler scheduler;
 	Dispatcher dispatcher;
-	std::vector<Process> process_vector;
+	std::vector<std::shared_ptr<Process>> process_vector;
 	std::vector<std::vector<std::string>> program_files;
 	int num_processes;
 };

@@ -24,18 +24,33 @@ Process::Process(std::vector<std::string> program_file) {
 			program_file[i].find("YIELD") != std::string::npos ||
 			program_file[i].find("OUT") != std::string::npos
 		) {
+			bool is_critical;
+			bool end_critical;
+			if (program_file[i - 1] == "CRITICAL_in") {
+				is_critical = true;
+			}
+			else if (program_file[i + 1] == "CRITICAL_out") {
+				end_critical = false;
+			}
 			int map_int = parse_number(program_file[i]);
 			std::size_t pos = program_file[i].find(" ");
 			std::string map_string = program_file[i].substr(0, pos);
-			process_map_vector.push_back(ProcessMap(map_string, map_int));
+			process_map_vector.push_back(ProcessMap(map_string, map_int, is_critical, end_critical));
 		}
 		else if (program_file[i].find("I/O") != std::string::npos) {
+			bool end_critical = false;
 			int seed = parse_number(program_file[i]);
 			std::size_t pos = program_file[i].find(" ");
 			std::string map_string = program_file[i].substr(0, pos);
 			srand((unsigned int)(time)(NULL));
 			int map_int = rand() % (seed * 10);
-			process_map_vector.push_back(ProcessMap(map_string, map_int));
+			if (program_file[i + 1] == "CRITICAL_out") {
+				end_critical = true;
+			}
+			else {
+				end_critical = false;
+			}
+			process_map_vector.push_back(ProcessMap(map_string, map_int, false, end_critical));
 		}
 		else {
 			continue;
@@ -45,6 +60,7 @@ Process::Process(std::vector<std::string> program_file) {
 	process_PCB.total_runtime = total_runtime;
 	process_PCB.name = name;
 	process_PCB.current_instruction = 0;
+	process_PCB.is_sleeping = false;
 
 	process_PCB.total_runtime = 0;
 	for (int i = 0; i < process_map_vector.size(); i++) {

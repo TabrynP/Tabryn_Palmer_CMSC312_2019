@@ -11,6 +11,7 @@ struct PCB {
 	int total_runtime;
 	int current_instruction;
 	std::string name;
+	bool is_sleeping;
 };
 
 #endif // PCB_H

@@ -15,12 +15,15 @@
 #include "PCB.h"
 
 struct ProcessMap {
-	ProcessMap(std::string type_in, int runtime_in) {
+	ProcessMap(std::string type_in, int runtime_in, bool is_critical_in, bool end_critical_in) {
 		type = type_in;
 		runtime = runtime_in;
+		is_critical = is_critical_in;
 	}
 	std::string type;
 	int runtime;
+	bool is_critical;
+	bool end_critical;
 };
 
 class Process {
@@ -50,6 +53,15 @@ public:
 	}
 	void set_process_map(ProcessMap in_map, int in) {
 		process_map_vector[in] = in_map;
+	}
+	void sleep() {
+		process_PCB.is_sleeping = true;
+	}
+	void wakeup() {
+		process_PCB.is_sleeping = false;
+	}
+	bool is_sleeping() {
+		return process_PCB.is_sleeping;
 	}
 
 private:

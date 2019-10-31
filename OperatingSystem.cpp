@@ -31,20 +31,21 @@ void OperatingSystem::read_program_file(std::string filename) {
 void OperatingSystem::create_processes() {
 	for (int i = 0; i < program_files.size(); i++) {
 		process_vector.push_back(
-			Process::Process(program_files[i])
+			std::make_shared<Process>(new Process(program_files[i]))
 		);
 	}
 }
 
 void OperatingSystem::execute_processes() {
-	std::vector<Process> process_queue = process_vector;
+	Semaphore s;
+	std::vector<std::shared_ptr<Process>> process_queue = process_vector;
 	do {
-		std::vector<Process> queue_temp = scheduler.schedule_processes(&process_queue);
+		std::vector<std::shared_ptr<Process>> queue_temp = scheduler.schedule_processes(process_queue, s);
 		process_queue.clear();
 		process_queue = queue_temp;
 		dispatcher.dispatch_processes(process_queue);
 		for (int i = 0; i < process_queue.size(); i++) {
-			if (process_queue[i].get_PCB().process_state == RUN) {
+			if (process_queue[i]->get_PCB().process_state == RUN) {
 				CPU0.execute_program(process_queue[i], scheduler);
 			}
 		}

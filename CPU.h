@@ -10,7 +10,7 @@
 
 class CPU {
 public: 
-	void execute_program(const Process& process, const Scheduler& scheduler);
+	void execute_program(std::shared_ptr<Process> process, const Scheduler& scheduler);
 };
 
 #endif //CPU_H

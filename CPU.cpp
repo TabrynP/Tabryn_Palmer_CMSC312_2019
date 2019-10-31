@@ -1,7 +1,7 @@
 #include "CPU.h"
 
-void CPU::execute_program(const Process& process, const Scheduler& scheduler) {
-	PCB pcb = process.get_PCB();
+void CPU::execute_program(std::shared_ptr<Process> process, const Scheduler& scheduler) {
+	PCB pcb = process->get_PCB();
 	int time_quantum = scheduler.get_time_quantum();
 	if (pcb.total_runtime < time_quantum) {
 		std::cout << "running process " << pcb.name << " for " << pcb.total_runtime << " cycles" << std::endl;
