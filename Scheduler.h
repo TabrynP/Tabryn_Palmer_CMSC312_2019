@@ -8,6 +8,10 @@
 struct Semaphore {
 	std::vector<std::shared_ptr<Process>> process_queue;
 	int value;
+	Semaphore() {
+		value = 1;
+		process_queue.clear();
+	}
 };
 
 class Scheduler {
@@ -18,7 +22,7 @@ public:
 	Scheduler(int quantum) { 
 		time_quantum = quantum;  in_queue = true; 
 	}
-	void schedule_processes(std::vector<std::shared_ptr<Process>>& process_vector, Semaphore& s);
+	void schedule_processes(std::vector<std::shared_ptr<Process>>& process_vector, std::shared_ptr<Semaphore> s);
 	bool processes_in_queue() { 
 		return in_queue; 
 	}
@@ -30,8 +34,8 @@ private:
 	bool in_queue;
 };
 
-void wait(Semaphore& s, std::shared_ptr<Process> p);
+void wait(std::shared_ptr<Semaphore> s, std::shared_ptr<Process> p);
 
-void signal(Semaphore& s);
+void signal(std::shared_ptr<Semaphore> s);
 
 #endif //SCHEDULER_H

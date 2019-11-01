@@ -10,11 +10,11 @@
 
 static void set_current_state(std::shared_ptr<Process>, int);
 static void print_PCB(std::shared_ptr<Process>);
+static void move_to_back(std::vector<std::shared_ptr<Process>>& process_vector, int i);
 
-void Scheduler::schedule_processes(std::vector<std::shared_ptr<Process>>& processes, Semaphore& s) {
+void Scheduler::schedule_processes(std::vector<std::shared_ptr<Process>>& processes, std::shared_ptr<Semaphore> s) {
 	in_queue = false;
 	std::vector<int> remaining_bt;
-	std::vector<std::shared_ptr<Process>> processes;
 	for (int i = 0; i < processes.size(); i++) {
 		remaining_bt.push_back(processes.at(i)->get_total_runtime() - time_quantum);
 		if (remaining_bt[i] > 0 && processes.at(i)->get_PCB().process_state != EXIT) {
@@ -28,39 +28,67 @@ void Scheduler::schedule_processes(std::vector<std::shared_ptr<Process>>& proces
 	for (int i = 0; i < processes.size(); i++) {
 		if (processes[i]->get_PCB().process_state == RUN) {
 			set_current_state(processes[i], time_quantum);
+			processes[i]->update_state(READY);
+			move_to_back(processes, i);
 		}
 		else if (processes[i]->get_PCB().process_state == WAIT) {
-			if (processes[i]->get_current_instruction().type == "I/O") {
-				processes[i]->set_total_runtime(remaining_bt[i]);
+			if (processes[i]->get_current_instruction().type == "I/O" && !(processes[i]->is_sleeping())) {
+				set_current_state(processes[i], time_quantum);
 			}
 			else {
-				processes[i]->update_state(READY);
+				if (!(processes[i]->is_sleeping())) {
+					processes[i]->update_state(READY);
+				}
 			}
+			if (i == (processes.size() - 1)) {
+				auto process_temp = processes[i];
+				move_to_back(processes, i);
+			}
+		}
+		else if (processes[i]->get_PCB().process_state == EXIT) {
+			if (processes[i]->is_in_critical()) {
+				signal(s);
+			}
+			processes.erase(processes.begin() + i);
+			break;
 		}
 		if (processes[i]->get_current_instruction().type == "I/O") {
 			processes[i]->update_state(WAIT);
+			if (processes[i]->get_current_instruction().end_critical && processes[i]->is_in_critical()) {
+				processes[i]->set_critical(false);
+				signal(s);
+			}
+			set_current_state(processes[i], time_quantum);
+			move_to_back(processes, i);
 		}
-		else if (processes[i]->get_current_instruction().type == "CALCULATE") {
+		else if (processes[i]->get_current_instruction().type == "CALCULATE" && !(processes[i]->is_sleeping())) {
 			processes[i]->update_state(READY);
 		}
 		else if (processes[i]->get_current_instruction().type == "YIELD") {
-			std::shared_ptr<Process> temp = processes[i];
-			processes.erase(processes.begin() + (i - 1));
-			processes.insert(processes.begin(), temp);
-			processes.front()->update_state(READY);
+			auto temp = processes[i];
+			move_to_back(processes, i);
 		}
-		else if (processes[i]->get_current_instruction().type == "OUT") {
+		else if (processes[i]->get_current_instruction().type == "OUT" && !(processes[i]->is_sleeping())) {
 			print_PCB(processes[i]);
 			processes[i]->update_state(READY);
 		}
-		if (processes[i]->get_current_instruction().is_critical) {
+		if (processes[i]->get_current_instruction().is_critical && !(processes[i]->is_in_critical()) && !(processes[i]->is_sleeping())) {
 			wait(s, processes[i]);
 		}
-		if (processes[i]->get_current_instruction().end_critical) {
+		if (processes[i]->get_current_instruction().end_critical && processes[i]->is_in_critical()) {
+			processes[i]->set_critical(false);
 			signal(s);
 		}
 		if (processes[i]->is_sleeping()) {
 			processes[i]->update_state(WAIT);
+		}
+	}
+	// If the process at the top of the queue is not in the READY state, put it back at the beginning of the queue.
+	if (processes.size() > 0) {
+		if (processes.back()->get_state() != READY) {
+			auto temp = processes.back();
+			processes.pop_back();
+			processes.insert(processes.begin(), temp);
 		}
 	}
 	for (int i = 0; i < remaining_bt.size(); i++) {
@@ -69,20 +97,29 @@ void Scheduler::schedule_processes(std::vector<std::shared_ptr<Process>>& proces
 			break;
 		}
 	}
-	return processes;
+}
+
+static void move_to_back(std::vector<std::shared_ptr<Process>>& processes, int i) {
+	auto process_temp = processes[i];
+	processes.erase(processes.begin() + i);
+	processes.insert(processes.begin(), process_temp);
 }
 
 static void set_current_state(std::shared_ptr<Process> process, int time_quantum) {
 	int temp = process->get_PCB().current_instruction;
 	while (time_quantum > 0) {
-		if (process->process_map(temp).runtime < time_quantum) {
+		if (process->process_map(temp).runtime < time_quantum && time_quantum > 0) {
+			int total_runtime = process->get_total_runtime() - process->process_map(temp).runtime;
 			time_quantum = time_quantum - process->process_map(temp).runtime;
-			process->set_current_instruction(temp++);
+			process->set_current_instruction(++temp);
+			process->set_total_runtime(total_runtime);
 		}
 		else {
+			int total_runtime = process->get_total_runtime() - time_quantum;
 			ProcessMap temp_map = process->process_map(temp);
 			temp_map.runtime = temp_map.runtime - time_quantum;
 			process->set_process_map(temp_map, temp);
+			process->set_total_runtime(total_runtime);
 			time_quantum = 0;
 		}
 	}
@@ -97,18 +134,22 @@ static void print_PCB(std::shared_ptr<Process> process) {
 	std::cout << "Process current instruction: " << pcb.current_instruction << std::endl;
 }
 
-void wait(Semaphore& s, std::shared_ptr<Process> p) {
-	s.value--;
-	if (s.value < 0) {
-		s.processes.push_back(p);
+void wait(std::shared_ptr<Semaphore> s, std::shared_ptr<Process> p) {
+	s->value--;
+	if (s->value < 0) {
+		s->process_queue.push_back(p);
 		p->sleep();
+	}
+	else {
+		p->set_critical(true);
 	}
 }
 
-void signal(Semaphore& s) {
-	s.value++;
-	if (s.value <= 0) {
-		s.processes.back()->wakeup();
-		s.processes.pop_back();
+void signal(std::shared_ptr<Semaphore> s) {
+	s->value++;
+	if (s->value <= 0) {
+		s->process_queue.back()->set_critical(true);
+		s->process_queue.back()->wakeup();
+		s->process_queue.pop_back();
 	}
 }

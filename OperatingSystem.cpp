@@ -1,7 +1,7 @@
 #include "OperatingSystem.h"
 
 OperatingSystem::OperatingSystem(int processes_in) {
-	scheduler = Scheduler(500);
+	scheduler = Scheduler(50);
 	CPU0 = CPU();
 	dispatcher = Dispatcher();
 	num_processes = processes_in;
@@ -30,25 +30,25 @@ void OperatingSystem::read_program_file(std::string filename) {
 
 void OperatingSystem::create_processes() {
 	for (int i = 0; i < program_files.size(); i++) {
-		process_vector.push_back(
-			std::make_shared<Process>(new Process(program_files[i]))
-		);
+		auto temp = std::make_shared<Process>(program_files[i]);
+		process_vector.push_back(temp);
 	}
 }
 
 void OperatingSystem::execute_processes() {
-	Semaphore s;
+	auto s = std::make_shared<Semaphore>();
 	std::vector<std::shared_ptr<Process>> process_queue = process_vector;
 	do {
-		std::vector<std::shared_ptr<Process>> queue_temp = scheduler.schedule_processes(process_queue, s);
-		process_queue.clear();
-		process_queue = queue_temp;
-		dispatcher.dispatch_processes(process_queue);
-		for (int i = 0; i < process_queue.size(); i++) {
-			if (process_queue[i]->get_PCB().process_state == RUN) {
-				CPU0.execute_program(process_queue[i], scheduler);
+		scheduler.schedule_processes(process_queue, s);
+		if (process_queue.size() != 0) {
+			dispatcher.dispatch_processes(process_queue);
+			for (int i = 0; i < process_queue.size(); i++) {
+				if (process_queue[i]->get_PCB().process_state == RUN) {
+					CPU0.execute_program(process_queue[i], scheduler);
+				}
 			}
 		}
+		
 	} while (scheduler.processes_in_queue());
 	std::cout << "All processes executed. Aborting.";
 }

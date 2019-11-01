@@ -17,7 +17,6 @@ public:
 	OperatingSystem(int processes_in);
 
 	void read_program_file(std::string filename);
-	void get_num_processes();
 	void create_processes();
 	void execute_processes();
 

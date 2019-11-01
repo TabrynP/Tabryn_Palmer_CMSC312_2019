@@ -1,10 +1,11 @@
 #include "Process.h"
 
-Process::Process(std::vector<std::string> program_file) {
+Process::Process(const std::vector<std::string>& program_file) {
 	memory = 0;
 	int total_runtime = 0;
 	std::string name = "placeholder";
 	State current_state = NEW;
+	process_PCB.in_critical = false;
 
 	for (int i = 0; i < program_file.size(); i++) {
 		if (program_file[i].find("Name: ") != std::string::npos) {
@@ -24,13 +25,15 @@ Process::Process(std::vector<std::string> program_file) {
 			program_file[i].find("YIELD") != std::string::npos ||
 			program_file[i].find("OUT") != std::string::npos
 		) {
-			bool is_critical;
-			bool end_critical;
+			bool is_critical = false;
+			bool end_critical = false;
 			if (program_file[i - 1] == "CRITICAL_in") {
 				is_critical = true;
-			}
-			else if (program_file[i + 1] == "CRITICAL_out") {
 				end_critical = false;
+			}
+			else if (program_file[i - 1] == "CRITICAL_out") {
+				end_critical = true;
+				is_critical = false;
 			}
 			int map_int = parse_number(program_file[i]);
 			std::size_t pos = program_file[i].find(" ");
@@ -44,7 +47,7 @@ Process::Process(std::vector<std::string> program_file) {
 			std::string map_string = program_file[i].substr(0, pos);
 			srand((unsigned int)(time)(NULL));
 			int map_int = rand() % (seed * 10);
-			if (program_file[i + 1] == "CRITICAL_out") {
+			if (program_file[i - 1] == "CRITICAL_out") {
 				end_critical = true;
 			}
 			else {

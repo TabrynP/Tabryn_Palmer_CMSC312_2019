@@ -12,6 +12,7 @@ struct PCB {
 	int current_instruction;
 	std::string name;
 	bool is_sleeping;
+	bool in_critical;
 };
 
 #endif // PCB_H

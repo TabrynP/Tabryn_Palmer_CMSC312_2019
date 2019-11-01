@@ -19,6 +19,7 @@ struct ProcessMap {
 		type = type_in;
 		runtime = runtime_in;
 		is_critical = is_critical_in;
+		end_critical = end_critical_in;
 	}
 	std::string type;
 	int runtime;
@@ -28,7 +29,16 @@ struct ProcessMap {
 
 class Process {
 public:
-	Process(std::vector<std::string> program_file);
+	Process(const std::vector<std::string>& program_file);
+	Process(const Process& old_process) {
+		current_state = old_process.current_state;
+		process_map_vector = old_process.process_map_vector;
+		memory = old_process.memory;
+		process_PCB = old_process.process_PCB;
+	}
+	~Process() {
+		process_map_vector.clear();
+	}
 	void update_state(State new_state);
 	int get_total_runtime() const {
 		return process_PCB.total_runtime;
@@ -62,6 +72,12 @@ public:
 	}
 	bool is_sleeping() {
 		return process_PCB.is_sleeping;
+	}
+	bool is_in_critical() {
+		return process_PCB.in_critical;
+	}
+	void set_critical(bool in) {
+		process_PCB.in_critical = in;
 	}
 
 private:

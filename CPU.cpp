@@ -1,6 +1,6 @@
 #include "CPU.h"
 
-void CPU::execute_program(std::shared_ptr<Process> process, const Scheduler& scheduler) {
+void CPU::execute_program(std::shared_ptr<Process> process, Scheduler scheduler) {
 	PCB pcb = process->get_PCB();
 	int time_quantum = scheduler.get_time_quantum();
 	if (pcb.total_runtime < time_quantum) {
@@ -13,5 +13,4 @@ void CPU::execute_program(std::shared_ptr<Process> process, const Scheduler& sch
 		for (int i = 0; i < time_quantum; i++) {}
 		std::cout << "Process running paused. " << (pcb.total_runtime - time_quantum) << " cycles remaining" << std::endl;
 	}
-
 }
