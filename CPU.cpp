@@ -13,4 +13,18 @@ void CPU::execute_program(std::shared_ptr<Process> process, Scheduler scheduler)
 		for (int i = 0; i < time_quantum; i++) {}
 		std::cout << "Process running paused. " << (pcb.total_runtime - time_quantum) << " cycles remaining" << std::endl;
 	}
+	auto ref = *process;
+	random_IO(ref);
+	std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+}
+
+void CPU::random_IO(Process& p) {
+	std::srand(std::time(0));
+	int random = std::rand() % 10000 + 1;
+	if (random >= 9000) {
+		random = random / 100;
+		std::cout << "Random IO Event Has Occured! Process will enter the waiting state for " << random << "cycles " << std::endl;
+		p.set_random_IO(random);
+		p.update_state(WAIT);
+	}
 }

@@ -84,6 +84,12 @@ public:
 	void set_in_memory(bool in) {
 		process_PCB.in_memory = in;
 	}
+	void set_random_IO(int in) {
+		process_PCB.random_IO = in;
+	}
+	int get_random_IO() {
+		return process_PCB.random_IO;
+	}
 
 private:
 	State current_state;

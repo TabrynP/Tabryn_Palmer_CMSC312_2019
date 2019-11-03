@@ -15,6 +15,7 @@ struct PCB {
 	bool in_critical;
 	int memory;
 	bool in_memory;
+	int random_IO;
 };
 
 #endif // PCB_H

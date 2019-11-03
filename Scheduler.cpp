@@ -87,6 +87,11 @@ void Scheduler::schedule_processes(std::vector<std::shared_ptr<Process>>& proces
 		if (process.is_sleeping()) {
 			process.update_state(WAIT);
 		}
+		if (process.get_random_IO() > 0) {
+			process.update_state(WAIT);
+			int random_IO = process.get_random_IO() - time_quantum;
+			process.set_random_IO(random_IO);
+		}
 		if ((process.get_state() == READY || process.get_state() == NEW) && !(process.is_in_memory())) {
 			if (test_memory(*i, m)) {
 				process.update_state(READY);

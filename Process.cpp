@@ -6,6 +6,7 @@ Process::Process(const std::vector<std::string>& program_file) {
 	State current_state = NEW;
 	process_PCB.in_critical = false;
 	process_PCB.in_memory = false;
+	process_PCB.random_IO = 0;
 
 	for (int i = 0; i < program_file.size(); i++) {
 		if (program_file[i].find("Name: ") != std::string::npos) {
