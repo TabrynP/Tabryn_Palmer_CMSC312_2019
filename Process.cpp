@@ -1,11 +1,11 @@
 #include "Process.h"
 
 Process::Process(const std::vector<std::string>& program_file) {
-	memory = 0;
 	int total_runtime = 0;
 	std::string name = "placeholder";
 	State current_state = NEW;
 	process_PCB.in_critical = false;
+	process_PCB.in_memory = false;
 
 	for (int i = 0; i < program_file.size(); i++) {
 		if (program_file[i].find("Name: ") != std::string::npos) {
@@ -18,7 +18,7 @@ Process::Process(const std::vector<std::string>& program_file) {
 			total_runtime = parse_number(program_file[i]);
 		}
 		else if (program_file[i].find("Memory: ") != std::string::npos) {
-			memory = parse_number(program_file[i]);
+			process_PCB.memory = parse_number(program_file[i]);
 		}
 		else if (
 			program_file[i].find("CALCULATE") != std::string::npos ||

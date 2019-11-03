@@ -3,7 +3,9 @@
 
 #include <vector>
 #include <iostream>
+#include <iterator>
 #include "Process.h"
+#include "MainMemory.h"
 
 struct Semaphore {
 	std::vector<std::shared_ptr<Process>> process_queue;
@@ -22,7 +24,7 @@ public:
 	Scheduler(int quantum) { 
 		time_quantum = quantum;  in_queue = true; 
 	}
-	void schedule_processes(std::vector<std::shared_ptr<Process>>& process_vector, std::shared_ptr<Semaphore> s);
+	void schedule_processes(std::vector<std::shared_ptr<Process>>& process_vector, Semaphore& s, MainMemory& m);
 	bool processes_in_queue() { 
 		return in_queue; 
 	}
@@ -34,8 +36,8 @@ private:
 	bool in_queue;
 };
 
-void wait(std::shared_ptr<Semaphore> s, std::shared_ptr<Process> p);
+void wait(Semaphore& s, std::shared_ptr<Process> p);
 
-void signal(std::shared_ptr<Semaphore> s);
+void signal(Semaphore& s);
 
 #endif //SCHEDULER_H

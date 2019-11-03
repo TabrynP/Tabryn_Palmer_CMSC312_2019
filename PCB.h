@@ -13,6 +13,8 @@ struct PCB {
 	std::string name;
 	bool is_sleeping;
 	bool in_critical;
+	int memory;
+	bool in_memory;
 };
 
 #endif // PCB_H

@@ -11,18 +11,18 @@
 
 int main(void) {
 	std::vector<std::string> program_files;
-	int num_programs = 4; //default
-	std::cout << "Enter the amount of programs to run: ";
-	std::cin >> num_programs;
-	std::cout << "Enter the programs you want to run ( 1 - 4 ) one at a time: " << std::endl;
-	std::cin.ignore();
+	int num_programs = 20; //default
+	int program = 1;
 	for (int i = 0; i < num_programs; i++) {
-		std::string tempstring;
-		std::getline(std::cin, tempstring);
+		std::string tempstring = std::to_string(program);
 		std::string process_string = "Process_";
 		process_string.append(tempstring);
 		process_string.append(".txt");
 		program_files.push_back(process_string);
+		program++;
+		if (program > 4) {
+			program = 1;
+		}
 	}
 	OperatingSystem main_system(num_programs);
 	for (int i = 0; i < program_files.size(); i++) {

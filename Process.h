@@ -33,7 +33,6 @@ public:
 	Process(const Process& old_process) {
 		current_state = old_process.current_state;
 		process_map_vector = old_process.process_map_vector;
-		memory = old_process.memory;
 		process_PCB = old_process.process_PCB;
 	}
 	~Process() {
@@ -79,11 +78,16 @@ public:
 	void set_critical(bool in) {
 		process_PCB.in_critical = in;
 	}
+	bool is_in_memory() {
+		return process_PCB.in_memory;
+	}
+	void set_in_memory(bool in) {
+		process_PCB.in_memory = in;
+	}
 
 private:
 	State current_state;
 	std::vector<ProcessMap> process_map_vector;
-	int memory;
 	PCB process_PCB;
 };
 

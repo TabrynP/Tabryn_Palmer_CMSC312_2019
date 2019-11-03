@@ -37,15 +37,16 @@ void OperatingSystem::create_processes() {
 
 void OperatingSystem::execute_processes() {
 	auto s = std::make_shared<Semaphore>();
+	auto s_ref = *s;
+	auto mem = std::make_shared<MainMemory>();
+	auto mem_ref = *mem;
 	std::vector<std::shared_ptr<Process>> process_queue = process_vector;
 	do {
-		scheduler.schedule_processes(process_queue, s);
+		scheduler.schedule_processes(process_queue, s_ref, mem_ref);
 		if (process_queue.size() != 0) {
 			dispatcher.dispatch_processes(process_queue);
-			for (int i = 0; i < process_queue.size(); i++) {
-				if (process_queue[i]->get_PCB().process_state == RUN) {
-					CPU0.execute_program(process_queue[i], scheduler);
-				}
+			if (process_queue.back()->get_state() == RUN) {
+				CPU0.execute_program(process_queue.back(), scheduler);
 			}
 		}
 		

@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClInclude Include="CPU.h" />
     <ClInclude Include="Dispatcher.h" />
+    <ClInclude Include="MainMemory.h" />
     <ClInclude Include="OperatingSystem.h" />
     <ClInclude Include="PCB.h" />
     <ClInclude Include="Process.h" />
@@ -30,6 +31,7 @@
     <ClCompile Include="CPU.cpp" />
     <ClCompile Include="Dispatcher.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MainMemory.cpp" />
     <ClCompile Include="OperatingSystem.cpp" />
     <ClCompile Include="Process.cpp" />
     <ClCompile Include="Scheduler.cpp" />

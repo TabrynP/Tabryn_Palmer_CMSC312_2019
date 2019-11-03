@@ -1,6 +1,6 @@
 Name: Video Game
 Total Runtime: 50000
-Memory: 10000
+Memory: 500
 
 CALCULATE 500
 I/O 3000

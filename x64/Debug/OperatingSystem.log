@@ -1,6 +1,7 @@
 ﻿  CPU.cpp
   Dispatcher.cpp
   main.cpp
+  MainMemory.cpp
   OperatingSystem.cpp
   Process.cpp
   Scheduler.cpp
