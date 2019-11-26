@@ -44,12 +44,48 @@ void OperatingSystem::execute_processes() {
 	do {
 		scheduler.schedule_processes(process_queue, s_ref, mem_ref);
 		if (process_queue.size() != 0) {
-			dispatcher.dispatch_processes(process_queue);
-			if (process_queue.back()->get_state() == RUN) {
-				CPU0.execute_program(process_queue.back(), scheduler);
+			auto running_processes = dispatcher.dispatch_processes(process_queue);
+			switch (running_processes.size()) {
+			case 1:
+				execute_one_thread(running_processes);
+			case 2:
+				execute_two_threads(running_processes);
+			case 3:
+				execute_three_threads(running_processes);
+			case 4:
+				execute_four_threads(running_processes);
 			}
 		}
 		
 	} while (scheduler.processes_in_queue());
 	std::cout << "All processes executed. Aborting.";
+}
+
+void OperatingSystem::execute_one_thread(std::vector<std::shared_ptr<Process>> running) {
+	std::thread thread_1(&CPU::execute_program, CPU0, running.begin(), scheduler);
+	thread_1.join();
+}
+void OperatingSystem::execute_two_threads(std::vector<std::shared_ptr<Process>> running) {
+	std::thread thread_1(&CPU::execute_program, CPU0, running.begin(), scheduler);
+	std::thread thread_2(&CPU::execute_program, CPU0, running.begin(), scheduler);
+	thread_1.join();
+	thread_2.join();
+}
+void OperatingSystem::execute_three_threads(std::vector<std::shared_ptr<Process>> running) {
+	std::thread thread_1(&CPU::execute_program, CPU0, running.begin(), scheduler);
+	std::thread thread_2(&CPU::execute_program, CPU0, running.begin(), scheduler);
+	std::thread thread_3(&CPU::execute_program, CPU1, running.begin(), scheduler);
+	thread_1.join();
+	thread_2.join();
+	thread_3.join();
+}
+void OperatingSystem::execute_four_threads(std::vector<std::shared_ptr<Process>> running) {
+	std::thread thread_1(&CPU::execute_program, CPU0, running.begin(), scheduler);
+	std::thread thread_2(&CPU::execute_program, CPU0, running.begin(), scheduler);
+	std::thread thread_3(&CPU::execute_program, CPU1, running.begin(), scheduler);
+	std::thread thread_4(&CPU::execute_program, CPU1, running.begin(), scheduler);
+	thread_1.join();
+	thread_2.join();
+	thread_3.join();
+	thread_4.join();
 }

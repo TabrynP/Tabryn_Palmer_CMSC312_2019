@@ -18,7 +18,7 @@ void CPU::execute_program(std::shared_ptr<Process> process, Scheduler scheduler)
 	std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 }
 
-void CPU::random_IO(Process& p) {
+void random_IO(Process& p) {
 	std::srand(std::time(0));
 	int random = std::rand() % 10000 + 1;
 	if (random >= 9000) {

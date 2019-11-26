@@ -19,9 +19,14 @@ public:
 	void read_program_file(std::string filename);
 	void create_processes();
 	void execute_processes();
+	void execute_one_thread(std::vector<std::shared_ptr<Process>> running);
+	void execute_two_threads(std::vector<std::shared_ptr<Process>> running);
+	void execute_three_threads(std::vector<std::shared_ptr<Process>> running);
+	void execute_four_threads(std::vector<std::shared_ptr<Process>> running);
 
 private:
 	CPU CPU0;
+	CPU CPU1;
 	Scheduler scheduler;
 	Dispatcher dispatcher;
 	std::vector<std::shared_ptr<Process>> process_vector;
