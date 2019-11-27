@@ -3,11 +3,21 @@
 
 #include <string>
 
+struct SharedResource {
+public:
+	SharedResource() {
+		shared_resource = "shared_resource";
+	}
+	std::string shared_resource;
+};
+
+
 struct SharedMemory {
 public:
 	SharedMemory() {
 		shared_int = 5;
 		shared_string = "shared";
+		shared_resource = SharedResource();
 	}
 
 	std::string access_string() {
@@ -28,6 +38,7 @@ public:
 private:
 	std::string shared_string;
 	int shared_int;
+	SharedResource shared_resource;
 };
 
 #endif // SHARED_MEMORY_H

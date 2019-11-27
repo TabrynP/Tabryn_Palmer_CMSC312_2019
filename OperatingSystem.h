@@ -19,10 +19,10 @@ public:
 	void read_program_file(std::string filename);
 	void create_processes();
 	void execute_processes();
-	void execute_one_thread(std::vector<std::shared_ptr<Process>> running);
-	void execute_two_threads(std::vector<std::shared_ptr<Process>> running);
-	void execute_three_threads(std::vector<std::shared_ptr<Process>> running);
-	void execute_four_threads(std::vector<std::shared_ptr<Process>> running);
+	void execute_one_thread(const std::vector<std::shared_ptr<Process>>& running, std::vector<std::shared_ptr<Process>>& process_queue);
+	void execute_two_threads(const std::vector<std::shared_ptr<Process>>& running, std::vector<std::shared_ptr<Process>>& process_queue);
+	void execute_three_threads(const std::vector<std::shared_ptr<Process>>& running, std::vector<std::shared_ptr<Process>>& process_queue);
+	void execute_four_threads(const std::vector<std::shared_ptr<Process>>& running, std::vector<std::shared_ptr<Process>>& process_queue);
 	void create_children();
 	void prioritize_processes();
 

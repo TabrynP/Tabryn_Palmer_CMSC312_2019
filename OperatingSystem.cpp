@@ -73,29 +73,29 @@ void OperatingSystem::execute_processes() {
 	std::cout << "All processes executed. Aborting.";
 }
 
-void OperatingSystem::execute_one_thread(std::vector<std::shared_ptr<Process>> running) {
-	std::thread thread_1(&CPU::execute_program, CPU0, std::ref(*(*running.begin())), std::ref(scheduler));
+void OperatingSystem::execute_one_thread(const std::vector<std::shared_ptr<Process>>& running, std::vector<std::shared_ptr<Process>>& process_queue) {
+	std::thread thread_1(&CPU::execute_program, CPU0, std::ref(*(*running.begin())), std::ref(scheduler), std::ref(process_queue));
 	thread_1.join();
 }
-void OperatingSystem::execute_two_threads(std::vector<std::shared_ptr<Process>> running) {
-	std::thread thread_1(&CPU::execute_program, CPU0, std::ref(*(*running.begin())), std::ref(scheduler));
-	std::thread thread_2(&CPU::execute_program, CPU0, std::ref(*(*(running.begin() + 1))), std::ref(scheduler));
+void OperatingSystem::execute_two_threads(const std::vector<std::shared_ptr<Process>>& running, std::vector<std::shared_ptr<Process>>& process_queue) {
+	std::thread thread_1(&CPU::execute_program, CPU0, std::ref(*(*running.begin())), std::ref(scheduler), std::ref(process_queue));
+	std::thread thread_2(&CPU::execute_program, CPU0, std::ref(*(*(running.begin() + 1))), std::ref(scheduler), std::ref(process_queue));
 	thread_1.join();
 	thread_2.join();
 }
-void OperatingSystem::execute_three_threads(std::vector<std::shared_ptr<Process>> running) {
-	std::thread thread_1(&CPU::execute_program, CPU0, std::ref(*(*running.begin())), std::ref(scheduler));
-	std::thread thread_2(&CPU::execute_program, CPU0, std::ref(*(*(running.begin() + 1))), std::ref(scheduler));
-	std::thread thread_3(&CPU::execute_program, CPU1, std::ref(*(*(running.begin() + 2))), std::ref(scheduler));
+void OperatingSystem::execute_three_threads(const std::vector<std::shared_ptr<Process>>& running, std::vector<std::shared_ptr<Process>>& process_queue) {
+	std::thread thread_1(&CPU::execute_program, CPU0, std::ref(*(*running.begin())), std::ref(scheduler), std::ref(process_queue));
+	std::thread thread_2(&CPU::execute_program, CPU0, std::ref(*(*(running.begin() + 1))), std::ref(scheduler), std::ref(process_queue));
+	std::thread thread_3(&CPU::execute_program, CPU1, std::ref(*(*(running.begin() + 2))), std::ref(scheduler), std::ref(process_queue));
 	thread_1.join();
 	thread_2.join();
 	thread_3.join();
 }
-void OperatingSystem::execute_four_threads(std::vector<std::shared_ptr<Process>> running) {
-	std::thread thread_1(&CPU::execute_program, CPU0, std::ref(*(*running.begin())), std::ref(scheduler));
-	std::thread thread_2(&CPU::execute_program, CPU0, std::ref(*(*(running.begin() + 1))), std::ref(scheduler));
-	std::thread thread_3(&CPU::execute_program, CPU1, std::ref(*(*(running.begin() + 2))), std::ref(scheduler));
-	std::thread thread_4(&CPU::execute_program, CPU1, std::ref(*(*(running.begin() + 3))), std::ref(scheduler));
+void OperatingSystem::execute_four_threads(const std::vector<std::shared_ptr<Process>>& running, std::vector<std::shared_ptr<Process>>& process_queue) {
+	std::thread thread_1(&CPU::execute_program, CPU0, std::ref(*(*running.begin())), std::ref(scheduler), std::ref(process_queue));
+	std::thread thread_2(&CPU::execute_program, CPU0, std::ref(*(*(running.begin() + 1))), std::ref(scheduler), std::ref(process_queue));
+	std::thread thread_3(&CPU::execute_program, CPU1, std::ref(*(*(running.begin() + 2))), std::ref(scheduler), std::ref(process_queue));
+	std::thread thread_4(&CPU::execute_program, CPU1, std::ref(*(*(running.begin() + 3))), std::ref(scheduler), std::ref(process_queue));
 	thread_1.join();
 	thread_2.join();
 	thread_3.join();
