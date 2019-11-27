@@ -7,6 +7,17 @@
 enum State { NEW, READY, RUN, WAIT, EXIT };
 
 struct PCB {
+	PCB() {
+		process_state = NEW;
+		total_runtime = 0;
+		current_instruction = 0;
+		name = "";
+		is_sleeping = false;
+		in_critical = false;
+		memory = 0;
+		in_memory = false;
+		random_IO = 0;
+	}
 	PCB(const PCB& old_PCB) {
 		process_state = old_PCB.process_state;
 		total_runtime = old_PCB.total_runtime;

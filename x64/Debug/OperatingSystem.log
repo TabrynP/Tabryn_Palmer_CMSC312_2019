@@ -4,8 +4,9 @@
   MainMemory.cpp
   OperatingSystem.cpp
 C:\Users\palme\source\Repos\Tabryn_Palmer_CMSC312_2019\CPU.cpp(21,22): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-  Process.cpp
 C:\Users\palme\source\Repos\Tabryn_Palmer_CMSC312_2019\OperatingSystem.cpp(107,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Process.cpp
+C:\Users\palme\source\Repos\Tabryn_Palmer_CMSC312_2019\OperatingSystem.cpp(122,13): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
   Scheduler.cpp
   Generating Code...
 C:\Users\palme\source\Repos\Tabryn_Palmer_CMSC312_2019\Process.cpp(40,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data

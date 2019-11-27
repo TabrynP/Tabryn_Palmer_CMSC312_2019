@@ -160,10 +160,24 @@ void Scheduler::schedule_processes(std::vector<std::shared_ptr<Process>>& proces
 
 	// Delete processes from the back of the queue until they no longer equal EXIT
 	if (offset > 0 && offset < processes.size()) {
-		processes.erase(processes.begin() + offset, processes.end());
+		processes.erase(processes.begin(), processes.begin() + (offset));
 	}
 	else if (offset >= processes.size()) {
 		processes.clear();
+	}
+
+	// Order all ready processes by their priority.
+	std::vector<std::shared_ptr<Process>> ready_queue;
+	for (auto it = processes.begin(); it != processes.end(); ++it) {
+		auto temp = *(*it);
+		if (temp.get_PCB().process_state == READY) {
+			ready_queue.push_back(*it);
+		}
+	}
+	processes.erase(processes.begin() + (processes.size() - ready_queue.size()), processes.end());
+	std::sort(ready_queue.begin(), ready_queue.end());
+	for (auto it = ready_queue.begin(); it != ready_queue.end(); ++it) {
+		processes.push_back(*it);
 	}
 
 	for (int i = 0; i < remaining_bt.size(); i++) {

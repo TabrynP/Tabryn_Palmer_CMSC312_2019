@@ -4,6 +4,7 @@
 #include <vector>
 #include <iostream>
 #include <iterator>
+#include <algorithm>
 #include "Process.h"
 #include "MainMemory.h"
 

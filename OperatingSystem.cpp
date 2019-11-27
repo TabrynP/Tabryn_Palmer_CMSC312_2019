@@ -116,3 +116,12 @@ void OperatingSystem::create_children() {
 		process_vector.push_back(children[i]);
 	}
 }
+
+void OperatingSystem::prioritize_processes() {
+	for (auto it = process_vector.begin(); it != process_vector.end(); ++it) {
+		srand(time(NULL));
+		int priority = rand() % 1000 + 1; //priority is between 1 and 1000;
+		auto temp = *(*it);
+		temp.set_priority(priority);
+	}
+}

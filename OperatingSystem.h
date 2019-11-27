@@ -24,6 +24,7 @@ public:
 	void execute_three_threads(std::vector<std::shared_ptr<Process>> running);
 	void execute_four_threads(std::vector<std::shared_ptr<Process>> running);
 	void create_children();
+	void prioritize_processes();
 
 private:
 	CPU CPU0;

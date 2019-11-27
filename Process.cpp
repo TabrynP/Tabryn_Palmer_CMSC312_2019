@@ -127,6 +127,7 @@ void Process::init_process(const std::vector<std::string>& program_file) {
 		process_PCB.total_runtime += process_map_vector[i].runtime;
 	}
 	is_parent = false;
+	priority = 0;
 }
 
 std::vector<std::string> Process::init_program_file(const std::string& file_in) {

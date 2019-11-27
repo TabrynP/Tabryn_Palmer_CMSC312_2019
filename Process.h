@@ -49,6 +49,9 @@ public:
 		children.clear();
 	}
 	friend static bool operator==(const Process& p1, const Process& p2);
+	bool operator< (const Process& p) const {
+		return priority < p.priority;
+	}
 	void update_state(State new_state);
 	int get_total_runtime() const {
 		return process_PCB.total_runtime;
@@ -110,6 +113,13 @@ public:
 	}
 	std::shared_ptr<Process> fork();
 
+	int get_priority() {
+		return priority;
+	}
+	void set_priority(int in) {
+		priority = in;
+	}
+
 	void abort(Process& child);
 	bool is_child;
 	bool is_parent;
@@ -119,6 +129,7 @@ private:
 	PCB process_PCB;
 	std::vector<std::shared_ptr<Process>> children;
 	std::shared_ptr<SharedMemory> shared_memory;
+	int priority;
 
 	void init_process(const std::vector<std::string>& program_file);
 	std::vector<std::string> init_program_file(const std::string& file_in);
