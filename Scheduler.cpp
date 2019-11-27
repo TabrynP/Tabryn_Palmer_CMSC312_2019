@@ -15,9 +15,15 @@ static void move_to_front(std::vector<std::shared_ptr<Process>>& process_vector,
 static bool test_memory(std::shared_ptr<Process>, MainMemory&);
 static void remove_from_memory(std::shared_ptr<Process>, MainMemory&);
 
-void Scheduler::schedule_processes(std::vector<std::shared_ptr<Process>>& processes, Semaphore& s, MainMemory& m) {
+void Scheduler::schedule_processes(std::vector<std::shared_ptr<Process>>& processes, Semaphore& s, MainMemory& m, int& count) {
 	in_queue = false;
 	std::vector<int> remaining_bt;
+	std::vector<std::shared_ptr<Process>>& queue = s.process_queue;
+	std::vector<PCB> pcb_vector;
+	for (int i = 0; i < processes.size(); i++) {
+		pcb_vector.push_back(processes[i]->get_PCB());
+	}
+
 	for (int i = 0; i < processes.size(); i++) {
 		remaining_bt.push_back(processes.at(i)->get_total_runtime() - time_quantum);
 		if (remaining_bt[i] > 0 && processes.at(i)->get_PCB().process_state != EXIT) {
@@ -54,61 +60,74 @@ void Scheduler::schedule_processes(std::vector<std::shared_ptr<Process>>& proces
 			if (process.is_in_critical()) {
 				signal(s);
 			}
+			if (process.is_parent && process.get_children().size() > 0) {
+				auto children = process.get_children();
+				for (auto it = children.begin(); it != children.end(); ++it) {
+					process.abort(*(*it));
+				}
+			}
 			remove_from_memory(*i, m);
-			processes.erase(i);
-			break;
+			move_to_back(processes, i);
+			count++;
 		}
-		if (process.get_current_instruction().type == "I/O") {
-			process.update_state(WAIT);
+		if (process.get_PCB().process_state != EXIT) {
+			if (process.get_current_instruction().type == "I/O") {
+				process.update_state(WAIT);
+				if (process.get_current_instruction().end_critical && process.is_in_critical()) {
+					process.set_critical(false);
+					signal(s);
+				}
+				set_current_state(process, time_quantum);
+				move_to_back(processes, i);
+			}
+			else if (process.get_current_instruction().type == "CALCULATE" && !(process.is_sleeping())) {
+				process.update_state(READY);
+			}
+			else if (process.get_current_instruction().type == "YIELD") {
+				move_to_back(processes, i);
+			}
+			else if (process.get_current_instruction().type == "OUT" && !(process.is_sleeping())) {
+				print_PCB(process);
+				process.update_state(READY);
+			}
+			if (process.get_current_instruction().is_critical && !(process.is_in_critical()) && !(process.is_sleeping())) {
+				wait(s, *i);
+			}
 			if (process.get_current_instruction().end_critical && process.is_in_critical()) {
 				process.set_critical(false);
 				signal(s);
 			}
-			set_current_state(process, time_quantum);
-			move_to_back(processes, i);
-		}
-		else if (process.get_current_instruction().type == "CALCULATE" && !(process.is_sleeping())) {
-			process.update_state(READY);
-		}
-		else if (process.get_current_instruction().type == "YIELD") {
-			move_to_back(processes, i);
-		}
-		else if (process.get_current_instruction().type == "OUT" && !(process.is_sleeping())) {
-			print_PCB(process);
-			process.update_state(READY);
-		}
-		if (process.get_current_instruction().is_critical && !(process.is_in_critical()) && !(process.is_sleeping())) {
-			wait(s, *i);
-		}
-		if (process.get_current_instruction().end_critical && process.is_in_critical()) {
-			process.set_critical(false);
-			signal(s);
-		}
-		if (process.is_sleeping()) {
-			process.update_state(WAIT);
-		}
-		if (process.get_random_IO() > 0) {
-			process.update_state(WAIT);
-			int random_IO = process.get_random_IO() - time_quantum;
-			process.set_random_IO(random_IO);
-		}
-		if ((process.get_state() == READY || process.get_state() == NEW) && !(process.is_in_memory())) {
-			if (test_memory(*i, m)) {
-				process.update_state(READY);
-			}
-			else {
+			if (process.is_sleeping()) {
 				process.update_state(WAIT);
+			}
+			if (process.get_random_IO() > 0) {
+				process.update_state(WAIT);
+				int random_IO = process.get_random_IO() - time_quantum;
+				if (random_IO > 0) {
+					process.set_random_IO(random_IO);
+				}
+				else {
+					process.set_random_IO(0);
+				}
+			}
+			if ((process.get_state() == READY || process.get_state() == NEW) && !(process.is_in_memory())) {
+				if (test_memory(*i, m)) {
+					process.update_state(READY);
+				}
+				else {
+					process.update_state(WAIT);
+					move_to_back(processes, i);
+				}
+			}
+			if (process.get_state() == WAIT) {
+				remove_from_memory(*i, m);
 				move_to_back(processes, i);
 			}
-		}
-		if (process.get_state() == WAIT) {
-			remove_from_memory(*i, m);
-			move_to_back(processes, i);
-		}
-		else if (process.get_state() == EXIT) {
-			remove_from_memory(*i, m);
-		}
-		test++;
+			else if (process.get_state() == EXIT) {
+				remove_from_memory(*i, m);
+			}
+			test++;
+		}	
 	}
 
 	// If the process at the top of the queue is not in the READY state, put it back at the beginning of the queue.
@@ -121,6 +140,30 @@ void Scheduler::schedule_processes(std::vector<std::shared_ptr<Process>>& proces
 				}
 			}
 		}
+	}
+
+	// Move all processes in EXIT state to the back
+	int offset = 0;
+	for (auto it = processes.begin(); it != processes.end(); ++it) {
+		auto temp = (*(*it));
+		if (temp.get_state() == EXIT) {
+			if (temp.is_in_critical()) {
+				signal(s);
+			}
+			if (temp.is_sleeping()) {
+
+			}
+			offset++;
+			move_to_back(processes, it);
+		}
+	}
+
+	// Delete processes from the back of the queue until they no longer equal EXIT
+	if (offset > 0 && offset < processes.size()) {
+		processes.erase(processes.begin() + offset, processes.end());
+	}
+	else if (offset >= processes.size()) {
+		processes.clear();
 	}
 
 	for (int i = 0; i < remaining_bt.size(); i++) {
@@ -183,10 +226,19 @@ static void remove_from_memory(std::shared_ptr<Process> process, MainMemory& m) 
 
 void wait(Semaphore& s, std::shared_ptr<Process> p) {
 	s.value--;
+	bool in_queue = false;
 	if (s.value < 0) {
-		s.process_queue.push_back(p);
-		p->sleep();
-		p->set_critical(false);
+		for (auto it = s.process_queue.begin(); it != s.process_queue.end(); ++it) {
+			auto temp = *it;
+			if (temp == p) {
+				in_queue = true;
+			}
+		}
+		if (!in_queue) {
+			s.process_queue.push_back(p);
+			p->sleep();
+			p->set_critical(false);
+		}
 	}
 	else {
 		p->wakeup();

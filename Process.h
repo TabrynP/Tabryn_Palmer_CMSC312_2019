@@ -13,6 +13,7 @@
 #include <ctime>
 
 #include "PCB.h"
+#include "SharedMemory.h"
 
 struct ProcessMap {
 	ProcessMap(std::string type_in, int runtime_in, bool is_critical_in, bool end_critical_in) {
@@ -21,23 +22,33 @@ struct ProcessMap {
 		is_critical = is_critical_in;
 		end_critical = end_critical_in;
 	}
+	friend static bool operator==(const ProcessMap& p1, const ProcessMap& p2);
 	std::string type;
 	int runtime;
 	bool is_critical;
 	bool end_critical;
 };
 
+static bool operator==(const ProcessMap& p1, const ProcessMap& p2) {
+	return
+		p1.type == p2.type
+		&& p1.runtime == p2.runtime
+		&& p1.is_critical == p2.is_critical
+		&& p1.end_critical == p2.end_critical;
+}
+
 class Process {
 public:
-	Process(const std::vector<std::string>& program_file);
-	Process(const Process& old_process) {
-		current_state = old_process.current_state;
-		process_map_vector = old_process.process_map_vector;
-		process_PCB = old_process.process_PCB;
-	}
+	Process(const std::vector<std::string>& program_file, std::shared_ptr<SharedMemory> mem);
+	Process(const std::vector<std::string>& program_file) : Process(program_file, std::make_shared<SharedMemory>()) {}
+	Process(const std::string& program_file, std::shared_ptr<SharedMemory> mem);
+	Process(const std::string& program_file) : Process(program_file, std::make_shared<SharedMemory>()) {}
+	Process(const Process& old_process);
 	~Process() {
 		process_map_vector.clear();
+		children.clear();
 	}
+	friend static bool operator==(const Process& p1, const Process& p2);
 	void update_state(State new_state);
 	int get_total_runtime() const {
 		return process_PCB.total_runtime;
@@ -91,15 +102,41 @@ public:
 		return process_PCB.random_IO;
 	}
 
+	std::vector<std::shared_ptr<Process>>& get_children() {
+		return children;
+	}
+	void set_child(std::shared_ptr<Process> child_in) {
+		children.push_back(child_in);
+	}
+	std::shared_ptr<Process> fork();
+
+	void abort(Process& child);
+	bool is_child;
+	bool is_parent;
+
 private:
-	State current_state;
 	std::vector<ProcessMap> process_map_vector;
 	PCB process_PCB;
+	std::vector<std::shared_ptr<Process>> children;
+	std::shared_ptr<SharedMemory> shared_memory;
+
+	void init_process(const std::vector<std::string>& program_file);
+	std::vector<std::string> init_program_file(const std::string& file_in);
 };
 
 static int parse_number(std::string);
 
+static bool operator==(const Process& p1, const Process& p2) {
+	if (
+		p1.process_map_vector == p2.process_map_vector &&
+		p1.children == p2.children &&
+		p1.shared_memory == p2.shared_memory
+		) {
+		return true;
+	}
+	else {
+		return false;
+	}
+}
 
 #endif //PROCESS_H
-
-

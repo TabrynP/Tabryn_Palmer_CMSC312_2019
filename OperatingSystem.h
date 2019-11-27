@@ -7,10 +7,10 @@
 #include <fstream>
 #include <iostream>
 #include "Process.h"
-#include "PCB.h"
 #include "CPU.h"
 #include "Scheduler.h"
 #include "Dispatcher.h"
+#include "SharedMemory.h"
  
 class OperatingSystem {
 public: 
@@ -23,6 +23,7 @@ public:
 	void execute_two_threads(std::vector<std::shared_ptr<Process>> running);
 	void execute_three_threads(std::vector<std::shared_ptr<Process>> running);
 	void execute_four_threads(std::vector<std::shared_ptr<Process>> running);
+	void create_children();
 
 private:
 	CPU CPU0;

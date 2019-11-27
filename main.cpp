@@ -11,7 +11,7 @@
 
 int main(void) {
 	std::vector<std::string> program_files;
-	int num_programs = 20; //default
+	int num_programs = 5; //default
 	int program = 1;
 	for (int i = 0; i < num_programs; i++) {
 		std::string tempstring = std::to_string(program);

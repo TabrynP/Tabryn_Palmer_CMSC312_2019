@@ -24,7 +24,7 @@ public:
 	Scheduler(int quantum) { 
 		time_quantum = quantum;  in_queue = true; 
 	}
-	void schedule_processes(std::vector<std::shared_ptr<Process>>& process_vector, Semaphore& s, MainMemory& m);
+	void schedule_processes(std::vector<std::shared_ptr<Process>>& process_vector, Semaphore& s, MainMemory& m, int& count);
 	bool processes_in_queue() { 
 		return in_queue; 
 	}

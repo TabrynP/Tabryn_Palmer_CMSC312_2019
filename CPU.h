@@ -8,7 +8,6 @@
 #include <time.h>
 #include <thread>
 #include <chrono>
-#include "PCB.h"
 
 #include "Process.h"
 #include "Scheduler.h"
@@ -18,8 +17,7 @@ public:
 	CPU() {
 		available_threads = 0;
 	}
-	friend struct thread;
-	void execute_program(std::shared_ptr<Process> processes, Scheduler scheduler);
+	void execute_program(Process& process, const Scheduler& scheduler);
 private:
 	int available_threads;
 };

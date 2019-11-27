@@ -1,6 +1,62 @@
 #include "Process.h"
 
-Process::Process(const std::vector<std::string>& program_file) {
+Process::Process(const std::vector<std::string>& program_file, std::shared_ptr<SharedMemory> mem) {
+	init_process(program_file);
+	shared_memory = mem;
+}
+
+Process::Process(const std::string& program_file, std::shared_ptr<SharedMemory> mem) {
+	init_process(init_program_file(program_file));
+	shared_memory = mem;
+}
+
+
+Process::Process(const Process& old_process) {
+	process_map_vector = old_process.process_map_vector;
+	process_PCB = old_process.process_PCB;
+	children = old_process.children;
+}
+
+void Process::update_state(State new_state) {
+	process_PCB.process_state = new_state;
+}
+
+static int parse_number(std::string program_line) {
+	std::size_t pos;
+	if (program_line.find(":") != std::string::npos) {
+		pos = program_line.find(": ") + 2;
+	}
+	else {
+		pos = program_line.find(" ");
+	}
+	std::string temp_str = program_line.substr(pos);
+	std::stringstream temp_strstream(temp_str);
+	int output;
+	temp_strstream >> output;
+	return output;
+}
+
+std::shared_ptr<Process> Process::fork() {
+	srand(time(NULL));
+	int process = rand() % 4 + 1;
+	std::string program_file = "Process_" + std::to_string(process) + ".txt";
+	std::shared_ptr<Process> child = std::make_shared<Process>(program_file, shared_memory);
+	set_child(child);
+	child->is_child = true;
+	is_parent = true;
+	return child;
+}
+
+void Process::abort(Process& child) {
+	for (auto it = children.begin(); it != children.end(); ++it) {
+		Process& temp = (*(*it));
+		if (temp == child) {
+			temp.update_state(EXIT);
+		}
+	}
+}
+
+void Process::init_process(const std::vector<std::string>& program_file) {
 	int total_runtime = 0;
 	std::string name = "placeholder";
 	State current_state = NEW;
@@ -25,7 +81,7 @@ Process::Process(const std::vector<std::string>& program_file) {
 			program_file[i].find("CALCULATE") != std::string::npos ||
 			program_file[i].find("YIELD") != std::string::npos ||
 			program_file[i].find("OUT") != std::string::npos
-		) {
+			) {
 			bool is_critical = false;
 			bool end_critical = false;
 			if (program_file[i - 1] == "CRITICAL_in") {
@@ -65,31 +121,23 @@ Process::Process(const std::vector<std::string>& program_file) {
 	process_PCB.name = name;
 	process_PCB.current_instruction = 0;
 	process_PCB.is_sleeping = false;
-
+	is_child = false;
 	process_PCB.total_runtime = 0;
 	for (int i = 0; i < process_map_vector.size(); i++) {
 		process_PCB.total_runtime += process_map_vector[i].runtime;
 	}
+	is_parent = false;
 }
 
-void Process::update_state(State new_state) {
-	process_PCB.process_state = new_state;
-}
-
-static int parse_number(std::string program_line) {
-	std::size_t pos;
-	if (program_line.find(":") != std::string::npos) {
-		pos = program_line.find(": ") + 2;
+std::vector<std::string> Process::init_program_file(const std::string& file_in) {
+	std::string line;
+	std::ifstream program_file;
+	std::vector<std::string> file_lines;
+	program_file.open(file_in);
+	if (program_file.is_open()) {
+		while (std::getline(program_file, line)) {
+			file_lines.push_back(line);
+		}
 	}
-	else {
-		pos = program_line.find(" ");
-	}
-	std::string temp_str = program_line.substr(pos);
-	std::stringstream temp_strstream(temp_str);
-	int output;
-	temp_strstream >> output;
-	return output;
+	return file_lines;
 }
-
-
-

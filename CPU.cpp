@@ -1,7 +1,7 @@
 #include "CPU.h"
 
-void CPU::execute_program(std::shared_ptr<Process> process, Scheduler scheduler) {
-	PCB pcb = process->get_PCB();
+void CPU::execute_program(Process& process, const Scheduler& scheduler) {
+	PCB pcb = process.get_PCB();
 	int time_quantum = scheduler.get_time_quantum();
 	if (pcb.total_runtime < time_quantum) {
 		std::cout << "running process " << pcb.name << " for " << pcb.total_runtime << " cycles" << std::endl;
@@ -13,13 +13,12 @@ void CPU::execute_program(std::shared_ptr<Process> process, Scheduler scheduler)
 		for (int i = 0; i < time_quantum; i++) {}
 		std::cout << "Process running paused. " << (pcb.total_runtime - time_quantum) << " cycles remaining" << std::endl;
 	}
-	auto ref = *process;
-	random_IO(ref);
-	std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+	random_IO(process);
+	//std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 }
 
 void random_IO(Process& p) {
-	std::srand(std::time(0));
+	std::srand(std::time(NULL));
 	int random = std::rand() % 10000 + 1;
 	if (random >= 9000) {
 		random = random / 100;

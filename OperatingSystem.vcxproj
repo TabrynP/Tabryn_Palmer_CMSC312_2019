@@ -26,6 +26,7 @@
     <ClInclude Include="PCB.h" />
     <ClInclude Include="Process.h" />
     <ClInclude Include="Scheduler.h" />
+    <ClInclude Include="SharedMemory.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CPU.cpp" />

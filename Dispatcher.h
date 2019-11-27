@@ -5,7 +5,7 @@
 
 class Dispatcher {
 public:
-	std::vector<std::shared_ptr<Process>> dispatch_processes(std::vector<std::shared_ptr<Process>> process);
+	std::vector<std::shared_ptr<Process>> dispatch_processes(const std::vector<std::shared_ptr<Process>>& process);
 };
 
 #endif //DISPATCHER_H
