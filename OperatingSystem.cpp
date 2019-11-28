@@ -292,6 +292,18 @@ void OperatingSystem::order_by_priority(std::vector<std::shared_ptr<Process>> pr
 	std::sort(processes.begin(), processes.end());
 }
 
+std::shared_ptr<Mailbox> OperatingSystem::random_message_pass(std::vector<std::shared_ptr<Process>> ready_queue) {
+	srand(time(NULL));
+	int random = rand() % 100 + 1;
+	if (random > 75) {
+		auto box = std::make_shared<Mailbox>(ready_queue[0], ready_queue[1]);
+		return box;
+	}
+	else {
+		return nullptr;
+	}
+}
+
 static void move_to_back(std::vector<std::shared_ptr<Process>>& processes, std::vector<std::shared_ptr<Process>>::iterator& i) {
 	std::rotate(processes.begin(), i, i + 1);
 }

@@ -12,6 +12,7 @@
 #include "Dispatcher.h"
 #include "SharedMemory.h"
 #include "PageTable.h"
+#include "Mailbox.h"
  
 class OperatingSystem {
 public: 
@@ -32,6 +33,7 @@ public:
 	}
 	void order_by_priority(std::vector<std::shared_ptr<Process>> processes);
 	std::vector<std::shared_ptr<Process>> get_ready_processes(std::vector<std::shared_ptr<Process>>& processes);
+	std::shared_ptr<Mailbox> random_message_pass(std::vector<std::shared_ptr<Process>> ready_queue);
 private:
 	CPU CPU0;
 	CPU CPU1;
