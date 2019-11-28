@@ -10,11 +10,11 @@ Process::Process(const std::string& program_file, std::shared_ptr<SharedMemory> 
 	shared_memory = mem;
 }
 
-
 Process::Process(const Process& old_process) {
 	process_map_vector = old_process.process_map_vector;
 	process_PCB = old_process.process_PCB;
 	children = old_process.children;
+	virtual_memory = old_process.virtual_memory;
 }
 
 void Process::update_state(State new_state) {
@@ -128,6 +128,8 @@ void Process::init_process(const std::vector<std::string>& program_file) {
 	}
 	is_parent = false;
 	priority = 0;
+	virtual_memory = VirtualMemory(process_PCB.memory);
+	just_ran = false;
 }
 
 std::vector<std::string> Process::init_program_file(const std::string& file_in) {

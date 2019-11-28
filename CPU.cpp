@@ -15,6 +15,7 @@ void CPU::execute_program(Process& process, const Scheduler& scheduler, std::vec
 	}
 	random_IO(process);
 	random_child_spawn(process, process_queue);
+	process.just_ran = true;
 	//std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 }
 

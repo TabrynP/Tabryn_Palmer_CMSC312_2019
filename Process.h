@@ -14,6 +14,7 @@
 
 #include "PCB.h"
 #include "SharedMemory.h"
+#include "VirtualMemory.h"
 
 struct ProcessMap {
 	ProcessMap(std::string type_in, int runtime_in, bool is_critical_in, bool end_critical_in) {
@@ -123,6 +124,7 @@ public:
 	void abort(Process& child);
 	bool is_child;
 	bool is_parent;
+	bool just_ran;
 
 private:
 	std::vector<ProcessMap> process_map_vector;
@@ -130,6 +132,7 @@ private:
 	std::vector<std::shared_ptr<Process>> children;
 	std::shared_ptr<SharedMemory> shared_memory;
 	int priority;
+	VirtualMemory virtual_memory;
 
 	void init_process(const std::vector<std::string>& program_file);
 	std::vector<std::string> init_program_file(const std::string& file_in);

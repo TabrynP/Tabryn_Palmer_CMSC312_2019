@@ -11,6 +11,7 @@
 #include "Scheduler.h"
 #include "Dispatcher.h"
 #include "SharedMemory.h"
+#include "PageTable.h"
  
 class OperatingSystem {
 public: 
@@ -25,15 +26,29 @@ public:
 	void execute_four_threads(const std::vector<std::shared_ptr<Process>>& running, std::vector<std::shared_ptr<Process>>& process_queue);
 	void create_children();
 	void prioritize_processes();
-
+	std::vector<std::shared_ptr<Process>> update_process_states(std::vector<std::shared_ptr<Process>>& processes, Semaphore& s, MainMemory& m, PageTable& t);
+	bool processes_in_queue() {
+		return in_queue;
+	}
+	void order_by_priority(std::vector<std::shared_ptr<Process>> processes);
+	std::vector<std::shared_ptr<Process>> get_ready_processes(std::vector<std::shared_ptr<Process>>& processes);
 private:
 	CPU CPU0;
 	CPU CPU1;
 	Scheduler scheduler;
 	Dispatcher dispatcher;
+	std::shared_ptr<PageTable> page_table;
 	std::vector<std::shared_ptr<Process>> process_vector;
 	std::vector<std::vector<std::string>> program_files;
 	int num_processes;
+	int time_quantum;
+	bool in_queue;
 };
+
+static void set_current_state(Process& process, int);
+static void print_PCB(Process&);
+static void move_to_back(std::vector<std::shared_ptr<Process>>& process_vector, std::vector<std::shared_ptr<Process>>::iterator& i);
+static bool test_memory(std::shared_ptr<Process>, MainMemory&, PageTable& t);
+static void remove_from_memory(std::shared_ptr<Process>, MainMemory&);
 
 #endif //OPERATING_SYSTEM_H
