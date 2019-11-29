@@ -5,37 +5,19 @@ OperatingSystem::OperatingSystem(int processes_in) {
 	CPU0 = CPU();
 	CPU1 = CPU();
 	dispatcher = Dispatcher();
+	external_storage = ExternalStorage();
 	page_table = std::make_shared<PageTable>();
+	cache = Cache();
 	num_processes = processes_in;
 	time_quantum = 50;
 }
 
-void OperatingSystem::read_program_file(std::string filename) {
-	std::string line;
-	std::ifstream program_file;
-	program_file.open(filename);
-	std::cout << "reading program file. . . \n";
-	if (program_file.is_open()) {
-		std::vector<std::string> file_lines;
-		while (std::getline(program_file, line)) {
-			file_lines.push_back(line);
+void OperatingSystem::create_processes(std::vector<std::string> file_in) {
+	for (auto it = file_in.begin(); it != file_in.end(); ++it) {
+		if (!external_storage.is_init(*it)) {
+			external_storage.init_process(*it);
 		}
-		program_files.push_back(file_lines);
-	}
-	std::cout << "Read the following files: " << std::endl;
-	for (int i = 0; i < program_files.size(); i++) {
-		for (int j = 0; j < program_files[i].size(); j++) {
-			std::cout << program_files[i][j] << std::endl;
-		}
-		std::cout << std::endl;
-	}
-}
-
-void OperatingSystem::create_processes() {
-	for (int i = 0; i < program_files.size(); i++) {
-		auto temp_mem = std::make_shared<SharedMemory>();
-		auto temp = std::make_shared<Process>(program_files[i]);
-		process_vector.push_back(temp);
+		process_vector.push_back(std::make_shared<Process>(external_storage.get_process(*it)));
 	}
 }
 
@@ -51,7 +33,7 @@ void OperatingSystem::execute_processes() {
 		auto ready_queue = update_process_states(process_queue, s_ref, mem_ref, page_ref);
 		scheduler.schedule_processes(ready_queue, s_ref);
 		if (process_queue.size() != 0) {
-			auto running_processes = dispatcher.dispatch_processes(ready_queue);
+			auto running_processes = dispatcher.dispatch_processes(ready_queue, cache);
 			switch (running_processes.size()) {
 			case 1:
 				execute_one_thread(running_processes, process_queue);

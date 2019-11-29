@@ -1,17 +1,22 @@
-﻿  CPU.cpp
+﻿  Cache.cpp
+  CPU.cpp
 C:\Users\palme\source\Repos\Tabryn_Palmer_CMSC312_2019\CPU.cpp(23,22): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
   Dispatcher.cpp
+  ExternalStorage.cpp
+  Mailbox.cpp
   main.cpp
   MainMemory.cpp
   OperatingSystem.cpp
 C:\Users\palme\source\Repos\Tabryn_Palmer_CMSC312_2019\CPU.cpp(34,22): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-C:\Users\palme\source\Repos\Tabryn_Palmer_CMSC312_2019\OperatingSystem.cpp(109,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\palme\source\Repos\Tabryn_Palmer_CMSC312_2019\OperatingSystem.cpp(91,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\palme\source\Repos\Tabryn_Palmer_CMSC312_2019\OperatingSystem.cpp(106,13): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
   PageTable.cpp
-C:\Users\palme\source\Repos\Tabryn_Palmer_CMSC312_2019\OperatingSystem.cpp(124,13): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\palme\source\Repos\Tabryn_Palmer_CMSC312_2019\OperatingSystem.cpp(278,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
   Process.cpp
 C:\Users\palme\source\Repos\Tabryn_Palmer_CMSC312_2019\PageTable.cpp(29,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
   Scheduler.cpp
   VirtualMemory.cpp
   Generating Code...
-C:\Users\palme\source\Repos\Tabryn_Palmer_CMSC312_2019\Process.cpp(40,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\palme\source\Repos\Tabryn_Palmer_CMSC312_2019\Process.cpp(36,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\palme\source\Repos\Tabryn_Palmer_CMSC312_2019\Mailbox.cpp(30): warning C4715: 'Mailbox::read_message': not all control paths return a value
   OperatingSystem.vcxproj -> C:\Users\palme\source\Repos\Tabryn_Palmer_CMSC312_2019\x64\Debug\OperatingSystem.exe

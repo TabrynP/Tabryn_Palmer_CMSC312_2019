@@ -41,8 +41,6 @@ static bool operator==(const ProcessMap& p1, const ProcessMap& p2) {
 class Process {
 public:
 	friend class ShortestJobProcess;
-	Process(const std::vector<std::string>& program_file, std::shared_ptr<SharedMemory> mem);
-	Process(const std::vector<std::string>& program_file) : Process(program_file, std::make_shared<SharedMemory>()) {}
 	Process(const std::string& program_file, std::shared_ptr<SharedMemory> mem);
 	Process(const std::string& program_file) : Process(program_file, std::make_shared<SharedMemory>()) {}
 	Process(const Process& old_process);

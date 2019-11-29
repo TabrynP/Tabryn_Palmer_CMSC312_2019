@@ -7,7 +7,7 @@
 // by their running time
 class ShortestJobProcess : public Process {
 public:
-	ShortestJobProcess(const std::vector<std::string>& program_file, std::shared_ptr<SharedMemory> mem) : Process(program_file, mem) {
+	ShortestJobProcess(const std::string& program_file, std::shared_ptr<SharedMemory> mem) : Process(program_file, mem) {
 		is_shortest_job = true;
 	}
 	ShortestJobProcess(const Process& old_process) {

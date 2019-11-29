@@ -19,8 +19,11 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Cache.h" />
     <ClInclude Include="CPU.h" />
     <ClInclude Include="Dispatcher.h" />
+    <ClInclude Include="ExternalStorage.h" />
+    <ClInclude Include="Mailbox.h" />
     <ClInclude Include="MainMemory.h" />
     <ClInclude Include="OperatingSystem.h" />
     <ClInclude Include="PageTable.h" />
@@ -28,11 +31,15 @@
     <ClInclude Include="Process.h" />
     <ClInclude Include="Scheduler.h" />
     <ClInclude Include="SharedMemory.h" />
+    <ClInclude Include="ShortestJobProcess.h" />
     <ClInclude Include="VirtualMemory.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Cache.cpp" />
     <ClCompile Include="CPU.cpp" />
     <ClCompile Include="Dispatcher.cpp" />
+    <ClCompile Include="ExternalStorage.cpp" />
+    <ClCompile Include="Mailbox.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainMemory.cpp" />
     <ClCompile Include="OperatingSystem.cpp" />

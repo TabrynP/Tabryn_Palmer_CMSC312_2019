@@ -25,9 +25,6 @@ int main(void) {
 		}
 	}
 	OperatingSystem main_system(num_programs);
-	for (int i = 0; i < program_files.size(); i++) {
-		main_system.read_program_file(program_files[i]);
-	}
-	main_system.create_processes();
+	main_system.create_processes(program_files);
 	main_system.execute_processes();
 }

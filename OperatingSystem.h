@@ -11,15 +11,16 @@
 #include "Scheduler.h"
 #include "Dispatcher.h"
 #include "SharedMemory.h"
+#include "ExternalStorage.h"
 #include "PageTable.h"
 #include "Mailbox.h"
+#include "Cache.h"
  
 class OperatingSystem {
 public: 
 	OperatingSystem(int processes_in);
 
-	void read_program_file(std::string filename);
-	void create_processes();
+	void create_processes(std::vector<std::string> files_in);
 	void execute_processes();
 	void execute_one_thread(const std::vector<std::shared_ptr<Process>>& running, std::vector<std::shared_ptr<Process>>& process_queue);
 	void execute_two_threads(const std::vector<std::shared_ptr<Process>>& running, std::vector<std::shared_ptr<Process>>& process_queue);
@@ -34,14 +35,16 @@ public:
 	void order_by_priority(std::vector<std::shared_ptr<Process>> processes);
 	std::vector<std::shared_ptr<Process>> get_ready_processes(std::vector<std::shared_ptr<Process>>& processes);
 	std::shared_ptr<Mailbox> random_message_pass(std::vector<std::shared_ptr<Process>> ready_queue);
+
 private:
 	CPU CPU0;
 	CPU CPU1;
 	Scheduler scheduler;
 	Dispatcher dispatcher;
+	ExternalStorage external_storage;
+	Cache cache;
 	std::shared_ptr<PageTable> page_table;
 	std::vector<std::shared_ptr<Process>> process_vector;
-	std::vector<std::vector<std::string>> program_files;
 	int num_processes;
 	int time_quantum;
 	bool in_queue;

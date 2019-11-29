@@ -16,6 +16,7 @@ class CPU {
 public:
 	CPU() {
 		available_threads = 0;
+		// CPU can hold 10 programs in its cache.
 	}
 	void execute_program(Process& process, const Scheduler& scheduler, std::vector<std::shared_ptr<Process>>& process_queue);
 private:

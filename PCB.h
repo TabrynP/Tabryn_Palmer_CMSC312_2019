@@ -17,6 +17,7 @@ struct PCB {
 		memory = 0;
 		in_memory = false;
 		random_IO = 0;
+		program_file = "";
 	}
 	PCB(const PCB& old_PCB) {
 		process_state = old_PCB.process_state;
@@ -28,6 +29,7 @@ struct PCB {
 		memory = old_PCB.memory;
 		in_memory = old_PCB.in_memory;
 		random_IO = old_PCB.random_IO;
+		program_file = old_PCB.program_file;
 	}
 	State process_state;
 	int total_runtime;
@@ -38,6 +40,7 @@ struct PCB {
 	int memory;
 	bool in_memory;
 	int random_IO;
+	std::string program_file;
 };
 
 static bool operator==(const PCB& PCB1, const PCB& PCB2) {

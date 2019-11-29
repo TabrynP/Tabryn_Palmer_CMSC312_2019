@@ -1,13 +1,9 @@
 #include "Process.h"
 
-Process::Process(const std::vector<std::string>& program_file, std::shared_ptr<SharedMemory> mem) {
-	init_process(program_file);
-	shared_memory = mem;
-}
-
 Process::Process(const std::string& program_file, std::shared_ptr<SharedMemory> mem) {
 	init_process(init_program_file(program_file));
 	shared_memory = mem;
+	process_PCB.program_file = program_file;
 }
 
 Process::Process(const Process& old_process) {
