@@ -13,6 +13,21 @@ static void move_to_back(std::vector<std::shared_ptr<Process>>& processes, std::
 
 
 void Scheduler::schedule_processes(std::vector<std::shared_ptr<Process>>& processes, Semaphore& s) {
+	processes = check_IO(processes, s);
+	switch (scheduler_type) {
+	case 0:
+		round_robin(processes, s);
+		break;
+	case 1:
+		shortest_job_first(processes, s);
+		break;
+	default:
+		round_robin(processes, s);
+		break;
+	}
+}
+
+std::vector<std::shared_ptr<Process>> Scheduler::check_IO(std::vector<std::shared_ptr<Process>>& processes, Semaphore& s) {
 	// Handle I/O and random I/O case.
 	for (auto i = processes.begin(); i != processes.end(); ++i) {
 		auto& process = (*(*i));
@@ -37,6 +52,18 @@ void Scheduler::schedule_processes(std::vector<std::shared_ptr<Process>>& proces
 		}
 	}
 
+	// Cut off any WAITING processes from ready queue
+	std::vector<std::shared_ptr<Process>> ready_queue;
+	for (auto i = processes.begin(); i != processes.end(); ++i) {
+		auto& process = (*(*i));
+		if (process.get_PCB().process_state == READY) {
+			ready_queue.push_back(*i);
+		}
+	}
+	return ready_queue;
+}
+
+void Scheduler::round_robin(std::vector<std::shared_ptr<Process>>& processes, Semaphore& s) {
 	// Schedule remaining ready processes.
 	for (auto i = processes.begin(); i != processes.end(); ++i) {
 		auto& process = (*(*i));
@@ -47,6 +74,22 @@ void Scheduler::schedule_processes(std::vector<std::shared_ptr<Process>>& proces
 		}
 	}
 }
+
+void Scheduler::shortest_job_first(std::vector<std::shared_ptr<Process>>& processes, Semaphore& s) {
+	std::vector<std::shared_ptr<ShortestJobProcess>> temp;
+	std::vector < std::shared_ptr<Process>> temp_2;
+	// Initialize shortest job processes
+	for (auto i = processes.begin(); i != processes.end(); ++i) {
+		temp.push_back(std::make_shared<ShortestJobProcess>(*(*i)));
+	}
+	// Call "sort" to sort by shortest job
+	std::sort(temp.begin(), temp.end());
+	// Replace the original processes with the ShortestJobProcesses (I love C++)
+	for (int i = 0; i < processes.size(); i++) {
+		*processes[i] = *temp[i];
+	}
+}
+
 
 void wait(Semaphore& s, std::shared_ptr<Process> p) {
 	s.value--;

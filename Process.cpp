@@ -130,6 +130,7 @@ void Process::init_process(const std::vector<std::string>& program_file) {
 	priority = 0;
 	virtual_memory = VirtualMemory(process_PCB.memory);
 	just_ran = false;
+	is_shortest_job = false;
 }
 
 std::vector<std::string> Process::init_program_file(const std::string& file_in) {

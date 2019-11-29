@@ -6,6 +6,7 @@
 #include <iterator>
 #include <algorithm>
 #include "Process.h"
+#include "ShortestJobProcess.h"
 #include "MainMemory.h"
 
 struct Semaphore {
@@ -19,11 +20,14 @@ struct Semaphore {
 
 class Scheduler {
 public:
-	Scheduler() { 
-		time_quantum = 100; in_queue = true; 
+	Scheduler(int quantum, int job_type) {
+		time_quantum = quantum; scheduler_type = job_type; in_queue = true;
 	}
-	Scheduler(int quantum) { 
-		time_quantum = quantum;  in_queue = true; 
+	Scheduler() : Scheduler(100, 0) {
+		in_queue = true;
+	}
+	Scheduler(int quantum) : Scheduler(quantum, 0) {
+		time_quantum = quantum;  in_queue = true;
 	}
 	void schedule_processes(std::vector<std::shared_ptr<Process>>& process_vector, Semaphore& s);
 	bool processes_in_queue() { 
@@ -35,6 +39,10 @@ public:
 private:
 	int time_quantum;
 	bool in_queue;
+	int scheduler_type;
+	void shortest_job_first(std::vector<std::shared_ptr<Process>>& process_vector, Semaphore& s);
+	void round_robin(std::vector<std::shared_ptr<Process>>& process_vector, Semaphore& s);
+	std::vector<std::shared_ptr<Process>> check_IO(std::vector<std::shared_ptr<Process>>& process_vector, Semaphore& s);
 };
 
 void wait(Semaphore& s, std::shared_ptr<Process> p);
