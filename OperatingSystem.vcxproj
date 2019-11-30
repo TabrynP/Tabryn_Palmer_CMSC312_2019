@@ -67,6 +67,7 @@
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <AdditionalIncludeDirectories>C:\Program Files %28x86%29\Microsoft Visual Studio 14.0\VC\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -88,17 +89,44 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Cache.h" />
+    <ClInclude Include="CPU.h" />
+    <ClInclude Include="Dispatcher.h" />
+    <ClInclude Include="ExternalStorage.h" />
+    <ClInclude Include="Mailbox.h" />
+    <ClInclude Include="MainMemory.h" />
+    <ClInclude Include="OperatingSystem.h" />
+    <ClInclude Include="PageTable.h" />
+    <ClInclude Include="PCB.h" />
+    <ClInclude Include="Process.h" />
+    <ClInclude Include="ProcessTypedef.h" />
+    <ClInclude Include="Scheduler.h" />
+    <ClInclude Include="Semaphore.h" />
+    <ClInclude Include="SharedMemory.h" />
+    <ClInclude Include="ShortestJobProcess.h" />
+    <ClInclude Include="VirtualMemory.h" />
+    <QtMoc Include="OperatingSystemGUI.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtUic Include="OperatingSystemGUI.ui" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Cache.cpp" />
+    <ClCompile Include="CPU.cpp" />
+    <ClCompile Include="Dispatcher.cpp" />
+    <ClCompile Include="ExternalStorage.cpp" />
+    <ClCompile Include="Mailbox.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="QtGuiApplication2.cpp" />
+    <ClCompile Include="MainMemory.cpp" />
+    <ClCompile Include="OperatingSystem.cpp" />
+    <ClCompile Include="OperatingSystemGUI.cpp" />
+    <ClCompile Include="PageTable.cpp" />
+    <ClCompile Include="Process.cpp" />
+    <ClCompile Include="Scheduler.cpp" />
+    <ClCompile Include="VirtualMemory.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="QtGuiApplication2.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <QtUic Include="QtGuiApplication2.ui" />
-  </ItemGroup>
-  <ItemGroup>
-    <QtRcc Include="QtGuiApplication2.qrc" />
+    <QtRcc Include="OperatingSystemGUI.qrc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
