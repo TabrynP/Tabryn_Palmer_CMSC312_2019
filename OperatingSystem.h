@@ -2,12 +2,12 @@
 #ifndef OPERATING_SYSTEM_H
 #define OPERATING_SYSTEM_H
 
+#include <thread>
 #include<string>
 #include<vector>
 #include <fstream>
 #include <iostream>
 #include <chrono>
-#include <thread>
 #include "Process.h"
 #include "CPU.h"
 #include "Scheduler.h"
