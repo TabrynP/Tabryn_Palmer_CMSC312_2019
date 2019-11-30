@@ -6,6 +6,8 @@
 #include<vector>
 #include <fstream>
 #include <iostream>
+#include <chrono>
+#include <thread>
 #include "Process.h"
 #include "CPU.h"
 #include "Scheduler.h"
@@ -35,6 +37,7 @@ public:
 	void order_by_priority(std::vector<std::shared_ptr<Process>> processes);
 	std::vector<std::shared_ptr<Process>> get_ready_processes(std::vector<std::shared_ptr<Process>>& processes);
 	std::shared_ptr<Mailbox> random_message_pass(std::vector<std::shared_ptr<Process>> ready_queue);
+	void log_data(std::vector<std::shared_ptr<Process>> queue);
 
 private:
 	CPU CPU0;

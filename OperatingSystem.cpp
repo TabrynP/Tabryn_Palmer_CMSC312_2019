@@ -52,6 +52,7 @@ void OperatingSystem::execute_processes() {
 			}
 		}
 		process_vector = process_queue;
+		std::this_thread::sleep_for(std::chrono::milliseconds(500));
 		
 	} while (scheduler.processes_in_queue());
 	std::cout << "All processes executed. Aborting.";
