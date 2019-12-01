@@ -106,7 +106,7 @@ void OperatingSystemGUI::update_running_table() {
 	ui.runningWidget->clear();
 	ui.runningWidget->setColumnCount(7);
 	ui.runningWidget->setHorizontalHeaderLabels(header_labels);
-	ui.runningWidget->setRowCount(system.process_vector.size());
+	ui.runningWidget->setRowCount(system.running_process_vector.size());
 	int i = 0;
 	for (auto it = system.running_process_vector.begin(); it < system.running_process_vector.end(); ++it) {
 		QString state, name, runtime, current_instruction, sleeping, critical, in_memory;
@@ -128,7 +128,7 @@ void OperatingSystemGUI::update_scheduler_table() {
 	ui.schedulerWidget->clear();
 	ui.schedulerWidget->setColumnCount(7);
 	ui.schedulerWidget->setHorizontalHeaderLabels(header_labels);
-	ui.schedulerWidget->setRowCount(system.process_vector.size());
+	ui.schedulerWidget->setRowCount(system.ready_process_vector.size());
 	int i = 0;
 	for (auto it = system.ready_process_vector.begin(); it < system.ready_process_vector.end(); ++it) {
 		QString state, name, runtime, current_instruction, sleeping, critical, in_memory;
@@ -197,4 +197,5 @@ void OperatingSystemGUI::parse_process_PCB(
 	case false:
 		in_memory = "No";
 	}
+	name = QString::fromUtf8(PCB.name.c_str());
 }

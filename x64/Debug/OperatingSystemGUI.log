@@ -1,4 +1,5 @@
-﻿  Reading Qt configuration (C:\Qt\5.12.6\msvc2017_64\bin\qmake.exe)
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppClean.targets(76,5): warning : The process cannot access the file 'c:\users\palme\source\repos\operatingsystemgui\x64\debug\operatingsystemgui.ilk' because it is being used by another process.
+  Reading Qt configuration (C:\Qt\5.12.6\msvc2017_64\bin\qmake.exe)
   uic OperatingSystemGUI.ui
   rcc OperatingSystemGUI.qrc
   moc OperatingSystemGUI.h
@@ -19,4 +20,5 @@
   qrc_OperatingSystemGUI.cpp
   moc_OperatingSystemGUI.cpp
 C:\Users\palme\source\Repos\OperatingSystemGUI\Mailbox.cpp(30): warning C4715: 'Mailbox::read_message': not all control paths return a value
+  LINK : C:\Users\palme\source\Repos\OperatingSystemGUI\x64\Debug\\OperatingSystemGUI.exe not found or not built by the last incremental link; performing full link
   OperatingSystemGUI.vcxproj -> C:\Users\palme\source\Repos\OperatingSystemGUI\x64\Debug\OperatingSystemGUI.exe
