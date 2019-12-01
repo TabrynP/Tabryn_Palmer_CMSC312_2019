@@ -9,7 +9,7 @@
 #include "Scheduler.h"
 
 static void move_to_back(std::vector<std::shared_ptr<Process>>& processes, std::vector<std::shared_ptr<Process>>::iterator& i);
-	static void set_current_state(Process & process, int time_quantum);
+	static void set_current_state(Process & process, int time_quantum, Semaphore& s);
 
 
 void Scheduler::schedule_processes(std::vector<std::shared_ptr<Process>>& processes, Semaphore& s) {
@@ -37,7 +37,7 @@ std::vector<std::shared_ptr<Process>> Scheduler::check_IO(std::vector<std::share
 				process.set_critical(false);
 				signal(s);
 			}
-			set_current_state(process, time_quantum);
+			set_current_state(process, time_quantum, s);
 			move_to_back(processes, i);
 		}
 		if (process.get_random_IO() > 0) {
@@ -68,7 +68,7 @@ void Scheduler::round_robin(std::vector<std::shared_ptr<Process>>& processes, Se
 	for (auto i = processes.begin(); i != processes.end(); ++i) {
 		auto& process = (*(*i));
 		if (process.just_ran) {
-			set_current_state(process, time_quantum);
+			set_current_state(process, time_quantum, s);
 			process.just_ran = false;
 			move_to_back(processes, i);
 		}
@@ -126,23 +126,24 @@ static void move_to_back(std::vector<std::shared_ptr<Process>>& processes, std::
 	std::rotate(processes.begin(), i, i + 1);
 }
 
-static void set_current_state(Process& process, int time_quantum) {
+static void set_current_state(Process& process, int time_quantum, Semaphore& s) {
 	int temp = process.get_PCB().current_instruction;
 	while (time_quantum > 0) {
-		if (process.process_map(temp).runtime < time_quantum && time_quantum > 0) {
-			int total_runtime = process.get_total_runtime() - process.process_map(temp).runtime;
-			time_quantum = time_quantum - process.process_map(temp).runtime;
-			process.set_current_instruction(++temp);
-			process.set_total_runtime(total_runtime);
-		}
-		else {
-			int total_runtime = process.get_total_runtime() - time_quantum;
-			ProcessMap temp_map = process.process_map(temp);
-			temp_map.runtime = temp_map.runtime - time_quantum;
-			process.set_process_map(temp_map, temp);
-			process.set_total_runtime(total_runtime);
-			time_quantum = 0;
+		if (temp <= process.process_map_vector.size()) {
+			if (process.process_map(temp).runtime < time_quantum && time_quantum > 0) {
+				int total_runtime = process.get_total_runtime() - process.process_map(temp).runtime;
+				time_quantum = time_quantum - process.process_map(temp).runtime;
+				process.set_current_instruction(++temp);
+				process.set_total_runtime(total_runtime);
+			}
+			else {
+				int total_runtime = process.get_total_runtime() - time_quantum;
+				ProcessMap temp_map = process.process_map(temp);
+				temp_map.runtime = temp_map.runtime - time_quantum;
+				process.set_process_map(temp_map, temp);
+				process.set_total_runtime(total_runtime);
+				time_quantum = 0;
+			}
 		}
 	}
-
 }

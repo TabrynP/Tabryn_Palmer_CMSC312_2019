@@ -1,6 +1,6 @@
 #include "OperatingSystem.h"
 
-OperatingSystem::OperatingSystem(int processes_in) {
+OperatingSystem::OperatingSystem() {
 	scheduler = Scheduler(50);
 	CPU0 = CPU();
 	CPU1 = CPU();
@@ -8,8 +8,8 @@ OperatingSystem::OperatingSystem(int processes_in) {
 	external_storage = ExternalStorage();
 	page_table = std::make_shared<PageTable>();
 	cache = Cache();
-	num_processes = processes_in;
 	time_quantum = 50;
+	in_queue = true;
 }
 
 void OperatingSystem::create_processes(std::vector<std::string> file_in) {
@@ -17,45 +17,38 @@ void OperatingSystem::create_processes(std::vector<std::string> file_in) {
 		if (!external_storage.is_init(*it)) {
 			external_storage.init_process(*it);
 		}
+		auto process = external_storage.get_process(*it);
 		process_vector.push_back(std::make_shared<Process>(external_storage.get_process(*it)));
+		create_children(process, process_vector);
 	}
 }
 
 void OperatingSystem::execute_processes() {
-	auto s = std::make_shared<Semaphore>();
-	auto s_ref = *s;
-	auto mem = std::make_shared<MainMemory>();
-	auto mem_ref = *mem;
-	auto page_ref = *page_table;
-	create_children();
 	std::vector<std::shared_ptr<Process>> process_queue = process_vector;
-	do {
-		auto ready_queue = update_process_states(process_queue, s_ref, mem_ref, page_ref);
-		scheduler.schedule_processes(ready_queue, s_ref);
-		if (process_queue.size() != 0) {
-			auto running_processes = dispatcher.dispatch_processes(ready_queue, cache);
-			switch (running_processes.size()) {
-			case 1:
-				execute_one_thread(running_processes, process_queue);
-				break;
-			case 2:
-				execute_two_threads(running_processes, process_queue);
-				break;
-			case 3:
-				execute_three_threads(running_processes, process_queue);
-				break;
-			case 4:
-				execute_four_threads(running_processes, process_queue);
-				break;
-			default:
-				break;
-			}
+	auto ready_queue = update_process_states(process_queue, s, m, *page_table);
+	scheduler.schedule_processes(ready_queue, s);
+	ready_process_vector = ready_queue;
+	if (process_queue.size() != 0) {
+		auto running_processes = dispatcher.dispatch_processes(ready_queue, cache);
+		running_process_vector = running_processes;
+		switch (running_processes.size()) {
+		case 1:
+			execute_one_thread(running_processes, process_queue);
+			break;
+		case 2:
+			execute_two_threads(running_processes, process_queue);
+			break;
+		case 3:
+			execute_three_threads(running_processes, process_queue);
+			break;
+		case 4:
+			execute_four_threads(running_processes, process_queue);
+			break;
+		default:
+			break;
 		}
-		process_vector = process_queue;
-		std::this_thread::sleep_for(std::chrono::milliseconds(500));
-		
-	} while (scheduler.processes_in_queue());
-	std::cout << "All processes executed. Aborting.";
+	}
+	process_vector = process_queue;
 }
 
 void OperatingSystem::execute_one_thread(const std::vector<std::shared_ptr<Process>>& running, std::vector<std::shared_ptr<Process>>& process_queue) {
@@ -87,15 +80,13 @@ void OperatingSystem::execute_four_threads(const std::vector<std::shared_ptr<Pro
 	thread_4.join();
 }
 
-void OperatingSystem::create_children() {
+void OperatingSystem::create_children(Process& p, std::vector<std::shared_ptr<Process>>& process_vector) {
 	std::vector<std::shared_ptr<Process>> children;
 	srand(time(NULL));
 	// Spawn between zero and five children for each process.
-	for (int i = 0; i < process_vector.size(); i++) {
-		int processes = rand() % 5;
-		for (int j = 0; j < processes; j++) {
-			children.push_back(process_vector[i]->fork());
-		}
+	int processes = rand() % 5;
+	for (int j = 0; j < processes; j++) {
+		children.push_back(p.fork());
 	}
 	for (int i = 0; i < children.size(); i++) {
 		process_vector.push_back(children[i]);
@@ -108,6 +99,15 @@ void OperatingSystem::prioritize_processes() {
 		int priority = rand() % 1000 + 1; //priority is between 1 and 1000;
 		auto temp = *(*it);
 		temp.set_priority(priority);
+	}
+}
+
+void OperatingSystem::remove_processes_from_queue(std::string name) {
+	for (auto it = process_vector.begin(); it != process_vector.end(); ++it) {
+		auto process = (*(*it));
+		if (process.get_PCB().name == name) {
+			process.update_state(EXIT);
+		}
 	}
 }
 

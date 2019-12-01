@@ -126,9 +126,9 @@ public:
 	bool is_parent;
 	bool just_ran;
 	bool is_shortest_job;
+	std::vector<ProcessMap> process_map_vector;
 
 private:
-	std::vector<ProcessMap> process_map_vector;
 	PCB process_PCB;
 	std::vector<std::shared_ptr<Process>> children;
 	std::shared_ptr<SharedMemory> shared_memory;

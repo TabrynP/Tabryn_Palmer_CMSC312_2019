@@ -1,0 +1,22 @@
+﻿  Reading Qt configuration (C:\Qt\5.12.6\msvc2017_64\bin\qmake.exe)
+  uic OperatingSystemGUI.ui
+  rcc OperatingSystemGUI.qrc
+  moc OperatingSystemGUI.h
+   RCC: Warning: No resources in 'C:\Users\palme\source\Repos\OperatingSystemGUI\OperatingSystemGUI.qrc'.
+  Cache.cpp
+  CPU.cpp
+  Dispatcher.cpp
+  ExternalStorage.cpp
+  Mailbox.cpp
+  main.cpp
+  MainMemory.cpp
+  OperatingSystem.cpp
+  OperatingSystemGUI.cpp
+  PageTable.cpp
+  Process.cpp
+  Scheduler.cpp
+  VirtualMemory.cpp
+  qrc_OperatingSystemGUI.cpp
+  moc_OperatingSystemGUI.cpp
+C:\Users\palme\source\Repos\OperatingSystemGUI\Mailbox.cpp(30): warning C4715: 'Mailbox::read_message': not all control paths return a value
+  OperatingSystemGUI.vcxproj -> C:\Users\palme\source\Repos\OperatingSystemGUI\x64\Debug\OperatingSystemGUI.exe

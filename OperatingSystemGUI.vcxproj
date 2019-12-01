@@ -50,11 +50,11 @@
     <Import Project="$(QtMsBuild)\qt_defaults.props" />
   </ImportGroup>
   <PropertyGroup Label="QtSettings" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <QtInstall>5</QtInstall>
+    <QtInstall>5.0</QtInstall>
     <QtModules>core;gui;widgets</QtModules>
   </PropertyGroup>
   <PropertyGroup Label="QtSettings" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <QtInstall>5</QtInstall>
+    <QtInstall>5.0</QtInstall>
     <QtModules>core;gui;widgets</QtModules>
   </PropertyGroup>
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.props')">
@@ -89,6 +89,30 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Cache.cpp" />
+    <ClCompile Include="CPU.cpp" />
+    <ClCompile Include="Dispatcher.cpp" />
+    <ClCompile Include="ExternalStorage.cpp" />
+    <ClCompile Include="Mailbox.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="MainMemory.cpp" />
+    <ClCompile Include="OperatingSystem.cpp" />
+    <ClCompile Include="OperatingSystemGUI.cpp" />
+    <ClCompile Include="PageTable.cpp" />
+    <ClCompile Include="Process.cpp" />
+    <ClCompile Include="Scheduler.cpp" />
+    <ClCompile Include="VirtualMemory.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="OperatingSystemGUI.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtUic Include="OperatingSystemGUI.ui" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtRcc Include="OperatingSystemGUI.qrc" />
+  </ItemGroup>
+  <ItemGroup>
     <ClInclude Include="Cache.h" />
     <ClInclude Include="CPU.h" />
     <ClInclude Include="Dispatcher.h" />
@@ -105,28 +129,6 @@
     <ClInclude Include="SharedMemory.h" />
     <ClInclude Include="ShortestJobProcess.h" />
     <ClInclude Include="VirtualMemory.h" />
-    <QtMoc Include="OperatingSystemGUI.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <QtUic Include="OperatingSystemGUI.ui" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="Cache.cpp" />
-    <ClCompile Include="CPU.cpp" />
-    <ClCompile Include="Dispatcher.cpp" />
-    <ClCompile Include="ExternalStorage.cpp" />
-    <ClCompile Include="Mailbox.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="MainMemory.cpp" />
-    <ClCompile Include="OperatingSystem.cpp" />
-    <ClCompile Include="OperatingSystemGUI.cpp" />
-    <ClCompile Include="PageTable.cpp" />
-    <ClCompile Include="Process.cpp" />
-    <ClCompile Include="Scheduler.cpp" />
-    <ClCompile Include="VirtualMemory.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <QtRcc Include="OperatingSystemGUI.qrc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

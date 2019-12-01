@@ -36,6 +36,17 @@ public:
 	int get_time_quantum() const { 
 		return time_quantum; 
 	}
+	void change_scheduler_type(std::string type) {
+		if (type == "round-robin") {
+			scheduler_type = 0;
+		}
+		else if (type == "shortest-job-first") {
+			scheduler_type = 1;
+		}
+		else {
+			scheduler_type = 0;
+		}
+	}
 private:
 	int time_quantum;
 	bool in_queue;

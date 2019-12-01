@@ -20,7 +20,7 @@
 
 class OperatingSystem {
 public:
-  OperatingSystem(int processes_in);
+  OperatingSystem();
 
   void create_processes(std::vector<std::string> files_in);
   void execute_processes();
@@ -35,7 +35,7 @@ public:
   void
   execute_four_threads(const std::vector<std::shared_ptr<Process>> &running,
                        std::vector<std::shared_ptr<Process>> &process_queue);
-  void create_children();
+  void create_children(Process& p, std::vector<std::shared_ptr<Process>>& process_vector);
   void prioritize_processes();
   std::vector<std::shared_ptr<Process>>
   update_process_states(std::vector<std::shared_ptr<Process>> &processes,
@@ -46,7 +46,14 @@ public:
   get_ready_processes(std::vector<std::shared_ptr<Process>> &processes);
   std::shared_ptr<Mailbox>
   random_message_pass(std::vector<std::shared_ptr<Process>> ready_queue);
-  void log_data(std::vector<std::shared_ptr<Process>> queue);
+  void change_scheduler_type(std::string type) {
+	  scheduler.change_scheduler_type(type);
+  }
+  void remove_processes_from_queue(std::string name);
+  bool in_queue;
+  std::vector<std::shared_ptr<Process>> process_vector;
+  std::vector<std::shared_ptr<Process>> ready_process_vector;
+  std::vector<std::shared_ptr<Process>> running_process_vector;
 
 private:
   CPU CPU0;
@@ -55,11 +62,12 @@ private:
   Dispatcher dispatcher;
   ExternalStorage external_storage;
   Cache cache;
+  Semaphore s;
+  MainMemory m;
   std::shared_ptr<PageTable> page_table;
-  std::vector<std::shared_ptr<Process>> process_vector;
-  int num_processes;
+  std::vector<std::shared_ptr<Process>> static_vector;
   int time_quantum;
-  bool in_queue;
+
 };
 
 static void set_current_state(Process &process, int);

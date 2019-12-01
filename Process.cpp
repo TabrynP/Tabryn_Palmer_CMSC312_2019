@@ -11,6 +11,10 @@ Process::Process(const Process& old_process) {
 	process_PCB = old_process.process_PCB;
 	children = old_process.children;
 	virtual_memory = old_process.virtual_memory;
+	is_child = old_process.is_child;
+	is_parent = old_process.is_parent;
+	just_ran = old_process.just_ran;
+	is_shortest_job = old_process.is_shortest_job;
 }
 
 void Process::update_state(State new_state) {
