@@ -325,6 +325,7 @@ static bool test_memory(std::shared_ptr<Process> process, MainMemory& m, PageTab
 		return true;
 	}
 	else {
+		t.page_replace(process, m, t);
 		return false;
 	}
 }

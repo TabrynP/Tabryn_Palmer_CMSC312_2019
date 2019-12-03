@@ -2,6 +2,7 @@
 #define MAIN_MEMORY_H
 
 #include "Process.h"
+#include "PageTable.h"
 #include <memory>
 #include <vector>
 
@@ -19,11 +20,11 @@ public:
   void delete_page(std::shared_ptr<Process> process);
   bool has_page(std::shared_ptr<Process> process);
   int used_memory();
+  std::vector<std::shared_ptr<Process>> pages;
 
 private:
   // Processes corresponding to pages (will probably be vector of Page objects
   // once I make that class).
-  std::vector<std::shared_ptr<Process>> pages;
   // Total available memory (always 4096).
   int memory_size;
 

@@ -7,6 +7,7 @@
 class PageTable {
 public:
   bool send_pages(std::shared_ptr<Process> process, MainMemory &mem);
+  void PageTable::page_replace(std::shared_ptr<Process> process, MainMemory& m);
 
 private:
   bool page_hit(std::shared_ptr<Process> process, MainMemory &mem);

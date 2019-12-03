@@ -29,3 +29,9 @@ int PageTable::randomize() {
 	srand(time(NULL));
 	return rand() % 100 + 1;
 }
+
+// FIFO page-replacement taking advantage of std::vector
+void PageTable::page_replace(std::shared_ptr<Process> process, MainMemory& m) {
+	m.pages.erase(m.pages.begin());
+	send_pages(process, m);
+}

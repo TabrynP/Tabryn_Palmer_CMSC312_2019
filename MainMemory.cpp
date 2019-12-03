@@ -51,4 +51,3 @@ int MainMemory::used_memory() {
 	}
 	return current_mem;
 }
-	
